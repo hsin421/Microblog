@@ -13,16 +13,16 @@
 		<%=yield%>
 
 		<% for a in [:notice, :alert, :error, :greeting] do if !flash[a].nil? %>
-			<div id="flash"><%= flash[a] %></div>
+			<div id="flash"><b><%= flash[a] %></b></div>
 		<% end %>
 		<% end %>
 
 		<div id="header">
 			<h1><a href="/">Pet Lovers</a></h1>
 			<ul>
-				<li><a href="#">My Posts</a></li>
-				<li><a href="#">My Profile</a></li>
-				<li><a href="#">Sign In</a></li>
+				<li><a href="/profile">My Posts</a></li>
+				<li><a href="/profile">My Profile</a></li>
+				<li><a href="/">Sign In</a></li>
 			</ul>
 		</div>
 

@@ -112,4 +112,14 @@ html, body {
 #signInForm {
 
 }
+
+#flash {
+
+	position:absolute;
+	top:100px;
+	left:400px;
+	color:red;
+}
+
+
 /* END index CSS*/

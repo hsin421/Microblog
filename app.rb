@@ -20,18 +20,23 @@ get '/' do
 end
 
 post '/sign_in' do
-  #puts params.inspect
-  @user = User.find_by(params[:user])
+  puts params.inspect
+  if User.find_by(uname: params[:user]["uname"]) != nil
+      @user = User.find_by(uname: params[:user]["uname"])
   
-  # puts "user pwd is #{@user.pwd} "
-  # puts "params pwd is #{params[:user]["pwd"]}"
-	if @user.pwd == params[:user]["pwd"]
-		session[:user_id] = @user.id
-		redirect '/profile'
-		else
-		flash[:alert] = "There was a problem signing you in. Please try again."
-    redirect '/'
-	end
+  puts "user pwd is #{@user.pwd} "
+  puts "params pwd is #{params[:user]["pwd"]}"
+    	if @user.pwd == params[:user]["pwd"]
+    		session[:user_id] = @user.id
+    		redirect '/profile'
+    		else
+    		flash[:alert] = "Wrong password. Please try again."
+        redirect '/'
+    	end
+else
+  flash[:alert] = "You don't seem to have an account with us. Please sign up"
+  redirect '/sign_up'
+end
 end
 
 post '/sign_up' do
@@ -51,6 +56,22 @@ get '/sign_up' do
 	erb :sign_up
 end
 
+get '/sign_out' do
+  flash[:greeting]="Goodbye! Come again!"
+  redirect '/'
+
+end  
+
+get '/follow'
+   erb 
+
+end
+
+
+
+
+
+#Experimental, may not work!!
 #This part is for images/files upload from paperclip and datamapper gems
 #should do "gem install data_mapper" and "gem install paperclip" & "gem install dm-paperclip"
 
