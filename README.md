@@ -1,4 +1,0 @@
-Microblog
-=========
-
-Microblog Project
