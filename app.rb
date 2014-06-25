@@ -9,31 +9,15 @@ set :sessions => true
 
 set :database, "sqlite3:microblog.sqlite3"
 
-get '/' do 
- erb :index
-	
+
+get '/' do
+	erb :index
 end
 
-get '/profile' do 
- erb :profile 
-	
-end
-
-get '/edit' do 
-
-	erb :profile_edit
-	
+get '/profile' do
+	erb :profile
 end
 
 get '/sign_up' do
-    erb :sign_up
-
+	erb :sign_up
 end
-
-get '/main' do 
-    erb :main
-	
-end
-
-
-
