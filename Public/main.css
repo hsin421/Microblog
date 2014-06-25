@@ -134,3 +134,14 @@ html, body {
 	padding-left: 20px;
 }
 /*END profile CSS*/
+
+#flash {
+
+	position:absolute;
+	top:100px;
+	left:400px;
+	color:red;
+}
+
+
+/* END index CSS*/
