@@ -103,13 +103,34 @@ html, body {
 
 /*BEGIN index CSS*/
 /*#signInFormWrapper{
-	display: table-cell;
-	vertical-align:center;
-	text-align: center;
-	width: 100%;
-	height: 100%;
-}*/
-#signInForm {
-
 }
+#signInForm {
+}*/
 /* END index CSS*/
+
+
+/*BEGIN profile CSS*/
+#profileWrapper {
+	width: 970px;
+	margin: 0 auto;
+	padding-top: 70px;
+}
+
+#profileSidebar, #postFeed {
+	float: left;
+	display: block;
+}
+
+#profileSidebar {
+	width: 219px;
+	min-height: 600px;
+	border-right: 1px solid gray;
+	padding-right: 20px;
+}
+
+#postFeed {
+	width: 680px;
+	height: 300px;
+	padding-left: 20px;
+}
+/*END profile CSS*/

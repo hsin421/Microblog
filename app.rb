@@ -16,7 +16,7 @@ end
 
 post '/sign_in' do
   @user = User.where(uname: params[:uname]).first
-	if @user.password == params[:pwd]
+	if @user.pwd == params[:pwd]
 		session[:user_id] = @user.id
 		redirect '/profile'
 		else
