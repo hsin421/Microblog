@@ -14,6 +14,9 @@ get '/' do
 	erb :index
 end
 
+post '/sign_in' do
+end
+
 get '/profile' do
 	erb :profile
 end
