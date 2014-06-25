@@ -13,7 +13,7 @@
 		<%=yield%>
 
 		<% for a in [:notice, :alert, :error, :greeting] do if !flash[a].nil? %>
-			<div><%= flash[a] %></div>
+			<div id="flash"><%= flash[a] %></div>
 		<% end %>
 		<% end %>
 

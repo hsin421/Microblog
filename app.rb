@@ -4,15 +4,15 @@ require './model'
 require 'bundler/setup'
 require 'rack-flash'
 require 'paperclip'
-require 'datamapper'
+require 'data_mapper'
 require 'dm-paperclip'
 
 enable :sessions
-use Rack::Flash
+use Rack::Flash, :sweep => true
 set :sessions => true
 
 set :database, "sqlite3:microblog.sqlite3"
-DataMapper::setup(:default, "sqlite3:microblog.sqlite3")
+#DataMapper::setup(:default, "sqlite3:microblog.sqlite3")
 
 
 get '/' do
@@ -20,13 +20,27 @@ get '/' do
 end
 
 post '/sign_in' do
-  @user = User.where(uname: params[:uname]).first
-	if @user.password == params[:pwd]
+  #puts params.inspect
+  @user = User.find_by(params[:user])
+  
+  # puts "user pwd is #{@user.pwd} "
+  # puts "params pwd is #{params[:user]["pwd"]}"
+	if @user.pwd == params[:user]["pwd"]
 		session[:user_id] = @user.id
 		redirect '/profile'
 		else
 		flash[:alert] = "There was a problem signing you in. Please try again."
+    redirect '/'
 	end
+end
+
+post '/sign_up' do
+User.create(params[:user])
+@user = User.find_by(params[:user])
+flash[:greeting]="Account Created!"
+session[:user_id] = @user.id
+  redirect '/profile'
+
 end
 
 get '/profile' do
