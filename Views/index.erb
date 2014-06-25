@@ -10,16 +10,15 @@
 </div>	 -->
 
 <form method='POST' action='/sign_in'>
-     <h1>Sign In</h1>
+     <h2>Sign In</h2>
   <div>
     <input type="text" name = "[user]uname"required/>
-    <label>User Name</label>
+    <label for="uname">User Name</label>
   </div>
   <div>
-    <input type="text" name ="[user]pwd" required/>
-    <label>Password</label>
+    <input type="password" name ="[user]pwd" required/>
+    <label for="pwd">Password</label>
   </div>
-  
-  
-     <button>Submit</button>
+     <button type="submit">Submit</button>
+   <p>Not a member? <a href="/sign_up">Sign up!</a></p>
      </form>

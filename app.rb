@@ -15,6 +15,13 @@ get '/' do
 end
 
 post '/sign_in' do
+  @user = User.where(uname: params[:uname]).first
+	if @user.password == params[:pwd]
+		session[:user_id] = @user.id
+		redirect '/profile'
+		else
+		flash[:alert] = "There was a problem signing you in. Please try again."
+	end
 end
 
 get '/profile' do
