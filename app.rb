@@ -8,3 +8,15 @@ use Rack::Flash, :sweep => true
 set :sessions => true
 
 set :database, "sqlite3:microblog.sqlite3"
+
+get '/' do
+	erb :index
+end
+
+get '/profile' do
+	erb :profile
+end
+
+get '/sign_up' do
+	erb :sign_up
+end
