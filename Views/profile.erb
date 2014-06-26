@@ -1,11 +1,25 @@
 
 
 
-<div>
+<!-- <div>
     <textarea id="write"></textarea>
     <input id="post_submit" type="submit" value="Submit"> 
 </div>
 <div id="feed">
+<<<<<<< HEAD
+<div class="post" id="f10">#10</div>
+<div class="post" id="f2">#2 </div>
+<div class="post" id="f3"></div>
+<div class="post" id="f4"></div>
+<div class="post" id="f5"></div>
+<div class="post" id="f6"></div>
+<div class="post" id="f7"></div>
+<div class="post" id="f8"></div>
+<div class="post" id="f9"></div>
+<div class="post" id="f1"> #1</div>
+
+</div> -->
+
 <% if Postgenerator(current_user,0) == nil %>
 <div class="post" id="f10"></div>
 <% else %>
@@ -17,7 +31,8 @@
 <div class="post" id="f1"><%=  Postgenerator(current_user,1).body     %></div>
 <% end %>
   
-</div>
+
+
 
 <div id="profileWrapper">
 
@@ -25,7 +40,35 @@
       <div id="flash"><b><%= flash[a] %></b></div>
     <% end %>
     <% end %>
-	<div id="profileSidebar">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus fugit vero ipsam delectus perferendis sed, repudiandae numquam maxime, asperiores quos!</div>
-	<div id="postFeed">thtkjfgkljbfdgjkbweg Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga incidunt molestias ex consequuntur, aspernatur quia ea inventore aperiam, tenetur ipsam odit natus alias mollitia ab nesciunt nostrum necessitatibus perferendis nobis illum doloremque, optio laboriosam! Eveniet vel, dolorum accusamus quae saepe quod, nulla iste, illo labore officiis ad ullam molestiae nisi.</div>
+	<div id="profileSidebar">
+		<div id="profilePic"></div>
+		<ul id="sidebarLinks">
+			<li id="userProfileWelcome">USERNAME HERE</li>
+			<li><a href="/profile_edit">Edit Profile</a></li>
+			<li>Following</li>
+			<li>Followers</li>
+		</ul>
+	</div>
+	<div id="postFeed">
+		<div id="feedWrapper">
+		<div>
+			<textarea id="write"></textarea>
+			<br/>
+			<input id="post_submit" type="submit" value="Submit"> 
+		</div>
+		<div id="feed">
+			<div class="post" id="f10">#10</div>
+			<div class="post" id="f2">#2 </div>
+			<div class="post" id="f3">#3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nisi, quam eligendi perferendis sequi earum esse molestiae. Natus iste nisi et, accusamus numquam, eos dicta tempore! Delectus, porro, molestiae? Quo amet quidem voluptatum autem, labore ut ullam sapiente fugit quibusdam corrupti. Suscipit quas officia iure ratione facere odio laboriosam eius.</div>
+			<div class="post" id="f4">#4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eveniet facere modi error asperiores molestias, explicabo dignissimos in architecto, culpa rerum dolor atque ea veniam earum perspiciatis optio alias deserunt aliquam nesciunt eaque nemo laborum necessitatibus possimus. In id velit, voluptate assumenda quasi, quibusdam illo dolores neque at, sapiente fugiat.</div>
+			<div class="post" id="f5">#5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, consectetur aperiam. Vero minima aperiam facilis earum illum, aspernatur maxime accusamus optio vel, soluta. Tempore iure mollitia distinctio itaque et, tenetur vitae, quae hic officiis, quam animi doloremque fugiat, repellat numquam fuga? Placeat neque sint facilis error incidunt quam omnis, quos!</div>
+			<div class="post" id="f6">#6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam excepturi soluta perspiciatis ipsam, maiores porro, asperiores odio repudiandae deserunt incidunt accusamus, fuga quisquam non possimus accusantium similique perferendis quod! Aut minus facere expedita qui optio totam, odio, quo voluptatibus voluptatem, aliquam assumenda. Tempora eum, similique ad nihil voluptate praesentium deserunt.</div>
+			<div class="post" id="f7">#7 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque animi dolores, sint consectetur, repellat sapiente autem temporibus exercitationem necessitatibus quaerat id obcaecati cumque, placeat quo quasi enim in suscipit dolore unde non, magni error quibusdam reprehenderit! Assumenda, quod minima maiores voluptatum minus, rerum voluptatibus accusamus dignissimos cupiditate, necessitatibus alias ea.</div>
+			<div class="post" id="f8">#8 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio eum ut ipsam aperiam quaerat temporibus cum rem? Nesciunt deleniti accusantium aut voluptatum perspiciatis voluptatem cum molestiae, quis quaerat voluptas, cupiditate, veritatis sunt, nobis quia fugiat assumenda dolor minima tempora quae. Natus perferendis omnis cupiditate voluptatum animi eius dicta consequatur distinctio?</div>
+			<div class="post" id="f9">#9 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, iste debitis atque temporibus perferendis aperiam expedita officiis, maiores harum fugiat soluta id? Suscipit qui, sint excepturi temporibus repellat nihil, architecto, libero eos ullam cupiditate fugit voluptatem, officia illum neque sit. Quod, consectetur. Esse sequi numquam eligendi autem aspernatur, quia deserunt.</div>
+			<div class="post" id="f1"> #1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore autem sapiente quaerat est aspernatur ad quo earum qui animi delectus quae, reprehenderit voluptatem alias temporibus iure, repellat fugit aliquam consectetur nihil facere eaque, ex quas deleniti! Obcaecati repudiandae cum, sed error, molestiae enim accusantium animi neque. Nostrum, voluptas odit placeat!</div>
+			</div>
+		</div>
+		</div>
 </div>
 

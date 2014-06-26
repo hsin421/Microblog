@@ -133,20 +133,9 @@ html, body {
 
 
 /*BEGIN profile CSS*/
-#profileWrapper {
-	width: 970px;
-	margin: 0 auto;
-	padding-top: 100px;
-
-}
-
-#profileSidebar, #postFeed {
-	float: left;
-	display: block;
-}
 
 
-#feed{
+/*#feed{
 	
 	position:absolute;
 	top:200px;
@@ -171,25 +160,79 @@ html, body {
 
 }
 #post_submit{
-
     position:absolute;
     top:150px;
     left:400px;
+}*/
 
+#formFeed{
+	position: relative;
 }
-/* END index CSS*/
 
+#feed{
+	position: relative;
+	top:0px;
+	left:10px;
+}
+.post {
+	width:600px;
+	top:0;
+	border-radius: 15px;
+	background-color: white;
+	margin-bottom: 20px;
+	padding: 10px 15px;
+	border: 1px solid rgba(77, 227, 198, 1);
+}
+
+#write{
+    height:100px;
+    width:600px;
+    max-width: 600px;
+    background-color: white;
+	border: 1px solid rgba(77, 227, 198, 1);
+      padding: 10px 15px;
+      border-radius: 10px;
+}
+
+
+#post_submit{
+ position: relative;
+  /*  top:150px;
+    left:400px;*/
+}
+
+#profileWrapper {
+	width: 970px;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+
+#profileSidebar, #postFeed {
+	float: left;
+	display: block;
+}
 #profileSidebar {
-	width: 219px;
+	width: 220px;
 	min-height: 600px;
-	border-right: 1px solid gray;
 	padding-right: 20px;
+	padding-left: 30px;
+}
+
+#profilePic {
+	width: 220px;
+	height: 220px;
+	background: url(images/profile_pic.jpg);
+	background-size: cover;
 }
 
 #postFeed {
-	width: 680px;
-	height: 300px;
 	padding-left: 20px;
+	border-left: 1px solid gray;
 }
+
+#sidebarLinks{
+	padding-top: 20px;
+}
+
 /*END profile CSS*/
 
