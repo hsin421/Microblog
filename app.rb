@@ -45,8 +45,6 @@ end
 
 
 post '/sign_up' do
-
-  
   
   if User.find_by(uname: params[:user]["uname"]) == nil
 
@@ -77,6 +75,10 @@ get '/profile' do
     redirect '/'
   end
 
+end
+
+get '/profile_edit' do
+  erb :profile_edit
 end
 
 get '/sign_up' do
@@ -121,22 +123,6 @@ def Postgenerator(user, number)
     end
   end
 end
-
-
-def Postgrabber(my_user, number)
-  b = my_user.followings.posts.last.id.to_i
-  if b > 10
-  return my_user.followings.posts.last.find_by(b-number+1)
-  else
-    if number < b
-    return my_user.followings.posts.last.find_by(b-number+1)
-  else
-    return nil
-  end
-end
-end
-
-
       
 # dblength = User.last.id.to_i
 

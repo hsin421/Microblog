@@ -175,7 +175,7 @@ html, body {
 	left:10px;
 }
 .post {
-	width:500px;
+	width:600px;
 	top:0;
 	border-radius: 15px;
 	background-color: white;
@@ -185,14 +185,16 @@ html, body {
 }
 
 #write{
-    height:85px;
-    width:500px;
-	position: relative;
-	/*top:205px;
-	left:405px;*/
-	z-index: 1;
-
+    height:100px;
+    width:600px;
+    max-width: 600px;
+    background-color: white;
+	border: 1px solid rgba(77, 227, 198, 1);
+      padding: 10px 15px;
+      border-radius: 10px;
 }
+
+
 #post_submit{
  position: relative;
   /*  top:150px;
@@ -202,7 +204,7 @@ html, body {
 #profileWrapper {
 	width: 970px;
 	margin: 0 auto;
-	padding-top: 100px;
+	padding-top: 10px;
 }
 
 #profileSidebar, #postFeed {
@@ -214,7 +216,6 @@ html, body {
 	min-height: 600px;
 	padding-right: 20px;
 	padding-left: 30px;
-	background-color: gray;
 }
 
 #profilePic {
@@ -228,5 +229,10 @@ html, body {
 	padding-left: 20px;
 	border-left: 1px solid gray;
 }
+
+#sidebarLinks{
+	padding-top: 20px;
+}
+
 /*END profile CSS*/
 
