@@ -8,6 +8,4 @@ gem 'sqlite3'
 gem 'rake'
 gem 'rack-flash3'
 gem 'paperclip', "~> 4.1"
-gem 'data_mapper'
-gem 'dm-paperclip'
 gem 'fileutils'

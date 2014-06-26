@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625181516) do
+ActiveRecord::Schema.define(version: 20140626030433) do
 
-  create_table "followerings", force: true do |t|
+  create_table "followers", force: true do |t|
     t.integer "user_id"
   end
 
-  create_table "followers", force: true do |t|
+  create_table "followings", force: true do |t|
     t.integer "user_id"
   end
 
