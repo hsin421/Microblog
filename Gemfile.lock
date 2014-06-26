@@ -31,6 +31,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pg (0.17.1)
     rack (1.5.2)
     rack-flash3 (1.0.5)
       rack
@@ -58,6 +59,7 @@ DEPENDENCIES
   activerecord
   fileutils
   paperclip (~> 4.1)
+  pg
   rack-flash3
   rake
   sinatra
