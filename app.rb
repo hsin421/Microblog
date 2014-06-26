@@ -4,16 +4,18 @@ require './model'
 require 'bundler/setup'
 require 'rack-flash'
 require 'paperclip'
-require 'data_mapper'
-require 'dm-paperclip'
 
 enable :sessions
 use Rack::Flash, :sweep => true
 set :sessions => true
 
-set :database, "sqlite3:microblog.sqlite3"
-#DataMapper::setup(:default, "sqlite3:microblog.sqlite3")
+configure(:development){set :database, "sqlite3:microblog.sqlite3"}
 
+helpers do
+  def current_user
+    session[:user_id].nil? ? nil : User.find(session[:user_id])
+  end
+end
 
 get '/' do
 	erb :index
@@ -69,7 +71,12 @@ end
 end
 
 get '/profile' do
+  if current_user != nil
 	erb :profile
+  else
+    redirect '/'
+  end
+
 end
 
 get '/sign_up' do
@@ -77,44 +84,28 @@ get '/sign_up' do
 end
 
 get '/sign_out' do
+  session[:user_id] = nil
   flash[:greeting]="Goodbye! Come again!"
   redirect '/'
 
 end  
 
-get '/follow' do
 
+dblength = User.last.id.to_i
+
+
+
+#To establish following/follower
+#Still need to put '/follow#{a}' link on the page 
+for a in (1..dblength)
+  get '/follow#{a}' do
+   Following.create({"id"=>User.find(a).id, "user_id"=>current_user.id})
+   Follower.create({"user_id"=> User.find(a).id, "id"=> current_user.id})
+  end
 end
 
 
 
 
-
-#Experimental, may not work!!
-#This part is for images/files upload from paperclip and datamapper gems
-#should do "gem install data_mapper" and "gem install paperclip" & "gem install dm-paperclip"
-
-def make_paperclip_mash(file_hash)
-  mash = Mash.new
-  mash['tempfile'] = file_hash[:tempfile]
-  mash['filename'] = file_hash[:filename]
-  mash['content_type'] = file_hash[:type]
-  mash['size'] = file_hash[:tempfile].size
-  mash
-end
-
-post '/upload' do
-  halt 409, "File seems to be emtpy" unless params[:file][:tempfile].size > 0
-  @resource = Resource.new(:file => make_paperclip_mash(params[:file]))
-  halt 409, flash[:error]="There were some errors processing your request...\n#{resource.errors.inspect}" unless @resource.save
- 
-  erb :upload
-end
- 
-get '/' do
-  erb :index
-end
-
-#Above == Paperclip/datamapper uploader
 
 

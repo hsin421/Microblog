@@ -142,6 +142,40 @@ html, body {
 	display: block;
 }
 
+
+#feed{
+	
+	position:absolute;
+	top:200px;
+	left:400px;
+}
+.post {
+	position:relative;
+	height:80px;
+	width:200px;
+	border:solid;
+	border-radius: 15px;
+	margin:10px;
+}
+
+#write{
+    height:85px;
+    width:205px;
+	position:absolute;
+	top:205px;
+	left:405px;
+	z-index: 1;
+
+}
+#post_submit{
+
+    position:absolute;
+    top:150px;
+    left:400px;
+
+}
+/* END index CSS*/
+
 #profileSidebar {
 	width: 219px;
 	min-height: 600px;
@@ -155,6 +189,5 @@ html, body {
 	padding-left: 20px;
 }
 /*END profile CSS*/
-
 
 
