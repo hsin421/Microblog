@@ -91,18 +91,18 @@ get '/sign_out' do
 end  
 
 
-dblength = User.last.id.to_i
+# dblength = User.last.id.to_i
 
 
 
 #To establish following/follower
 #Still need to put '/follow#{a}' link on the page 
-for a in (1..dblength)
-  get '/follow#{a}' do
-   Following.create({"id"=>User.find(a).id, "user_id"=>current_user.id})
-   Follower.create({"user_id"=> User.find(a).id, "id"=> current_user.id})
-  end
-end
+# for a in (1..dblength)
+#   get '/follow#{a}' do
+#    Following.create({"id"=>User.find(a).id, "user_id"=>current_user.id})
+#    Follower.create({"user_id"=> User.find(a).id, "id"=> current_user.id})
+#   end
+# end
 
 
 
