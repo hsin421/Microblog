@@ -37,17 +37,36 @@ post '/sign_in' do
         redirect '/'
     	end
 else
-  flash[:alert] = "You don't seem to have an account with us. Please sign up"
+
+  flash[:alert] = "You don't seem to have an account with us. Please sign up."
   redirect '/sign_up'
 end
 end
 
+
 post '/sign_up' do
-User.create(params[:user])
-@user = User.find_by(params[:user])
-flash[:greeting]="Account Created!"
-session[:user_id] = @user.id
-  redirect '/profile'
+
+  
+  
+  if User.find_by(uname: params[:user]["uname"]) == nil
+
+  if params[:user]["pwd"] == params[:user]["cfpwd"]  
+
+  User.create(params[:user])
+  @user = User.find_by(params[:user])
+  session[:user_id] = @user.id
+  flash[:greeting] = "Account created! Start following friends, writing posts and filling out your profile."
+    redirect '/profile'
+   else
+    flash[:alert] = "Password doesn't match. Please try again"
+    redirect '/sign_up'
+  end
+
+  else
+  flash[:alert] = "That username is in use. Please choose another."
+  redirect '/sign_up'
+end
+
 
 end
 

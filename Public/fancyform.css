@@ -23,7 +23,8 @@ form {
   min-width: 400px;
   box-sizing: border-box;
   padding: 30px 25px;
-  background-color: rgba(255,255,255,1);
+  background-color: rgba(255,255,255,.92);
+
   border-radius: 15px;
   margin: 150px 0;
   left: 50%;
@@ -33,11 +34,13 @@ form {
 }
     
   h2 {
-    color: rgba(77, 227, 198, 1);
-    font-weight: 100;
+    color: #888;
+    font-weight: bold;
+    font-size: 18px;
     letter-spacing: 0.01em;
     margin-left: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+
   }
       
   button {
@@ -59,14 +62,17 @@ form {
     font-family: arial, sans-serif;
   }
     
-    button:hover {
+
+    button:hover, button:focus, button:active {
       color:white;
       background-color: rgba(77, 227, 198, 1);
+      outline:0;
     }
 
-    button:focus {
+    /*button:focus {
       color:white;
-      background-color: $red;}
+      background-color: $red;}*/
+
     
   /*.question {
     position: relative;
@@ -95,7 +101,8 @@ form {
       pointer-events: none;
     }
       
-    input[type="text"], input[type="password"] {
+
+    input[type="text"], input[type="password"], input[type="email"] {
       transition: all, 0.25s, cubic-bezier(.53,.01,.35,1.5);
       appearance: none;
       background-color: none;
@@ -113,21 +120,33 @@ form {
       position: relative;
       z-index: 1;
       }
+
+    
+
       input:focus {
         outline: none;
         background: rgba(77, 227, 198, 1);
+        border: 1px solid rgba(77, 227, 198, 1);
+
         color: white;
         margin-top: 30px;}
         
       input:valid {
         margin-top: 30px;
       }
+
+
+      input:focus:invalid {
+       border: 1px solid red;
+      }
+
           
       input:focus ~ label {
         -webkit-transform: translate( 0 , -35px );
       }
       
       input:valid ~ label {
+
         text-transform: uppercase;
         font-style: italic;
         -webkit-transform: translate( 5px , -35px ) ;
