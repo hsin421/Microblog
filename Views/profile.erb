@@ -6,6 +6,7 @@
     <input id="post_submit" type="submit" value="Submit"> 
 </div>
 <div id="feed">
+<<<<<<< HEAD
 <div class="post" id="f10">#10</div>
 <div class="post" id="f2">#2 </div>
 <div class="post" id="f3"></div>
@@ -19,7 +20,22 @@
 
 </div> -->
 
+<% if Postgenerator(current_user,0) == nil %>
+<div class="post" id="f10"></div>
+<% else %>
+<div class="post" id="f10"><%=  Postgenerator(current_user,0).body     %></div>
+<% end %>
+<% if Postgenerator(current_user,1) == nil %>
+<div class="post" id="f1"></div>
+<% else %>
+<div class="post" id="f1"><%=  Postgenerator(current_user,1).body     %></div>
+<% end %>
+  
+</div>
+
+
 <div id="profileWrapper">
+
  <% for a in [:notice, :alert, :error, :greeting] do if !flash[a].nil? %>
       <div id="flash"><b><%= flash[a] %></b></div>
     <% end %>

@@ -70,11 +70,13 @@ html, body {
 	box-shadow: 1px 1px 8px #404040;*/
 }
 
+
 #profileWrapper #flash {
 	color:rgba(77, 227, 198, 1);
 	text-align: center;
 	padding-bottom: 10px;
 }
+
 
 #wrapper {
 	width: 100%;
@@ -131,6 +133,7 @@ html, body {
 
 
 /*BEGIN profile CSS*/
+
 
 /*#feed{
 	
@@ -226,5 +229,4 @@ html, body {
 	border-left: 1px solid gray;
 }
 /*END profile CSS*/
-
 
