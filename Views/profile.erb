@@ -1,4 +1,8 @@
 <div id="profileWrapper">
+ <% for a in [:notice, :alert, :error, :greeting] do if !flash[a].nil? %>
+      <div id="flash"><b><%= flash[a] %></b></div>
+    <% end %>
+    <% end %>
 	<div id="profileSidebar">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus fugit vero ipsam delectus perferendis sed, repudiandae numquam maxime, asperiores quos!</div>
 	<div id="postFeed">thtkjfgkljbfdgjkbweg Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga incidunt molestias ex consequuntur, aspernatur quia ea inventore aperiam, tenetur ipsam odit natus alias mollitia ab nesciunt nostrum necessitatibus perferendis nobis illum doloremque, optio laboriosam! Eveniet vel, dolorum accusamus quae saepe quod, nulla iste, illo labore officiis ad ullam molestiae nisi.</div>
 </div>

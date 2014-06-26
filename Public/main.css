@@ -70,6 +70,12 @@ html, body {
 	box-shadow: 1px 1px 8px #404040;*/
 }
 
+#profileWrapper #flash {
+	color:rgba(77, 227, 198, 1);
+	text-align: center;
+	padding-bottom: 10px;
+}
+
 #wrapper {
 	width: 100%;
 	margin: 0 auto; 
@@ -128,7 +134,7 @@ html, body {
 #profileWrapper {
 	width: 970px;
 	margin: 0 auto;
-	padding-top: 70px;
+	padding-top: 100px;
 }
 
 #profileSidebar, #postFeed {
@@ -149,3 +155,6 @@ html, body {
 	padding-left: 20px;
 }
 /*END profile CSS*/
+
+
+
