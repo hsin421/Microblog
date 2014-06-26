@@ -131,19 +131,8 @@ html, body {
 
 
 /*BEGIN profile CSS*/
-#profileWrapper {
-	width: 970px;
-	margin: 0 auto;
-	padding-top: 100px;
-}
 
-#profileSidebar, #postFeed {
-	float: left;
-	display: block;
-}
-
-
-#feed{
+/*#feed{
 	
 	position:absolute;
 	top:200px;
@@ -168,25 +157,73 @@ html, body {
 
 }
 #post_submit{
-
     position:absolute;
     top:150px;
     left:400px;
+}*/
+
+#formFeed{
+	position: relative;
+}
+
+#feed{
+	position: relative;
+	top:0px;
+	left:10px;
+}
+.post {
+	width:500px;
+	top:0;
+	border-radius: 15px;
+	background-color: white;
+	margin-bottom: 20px;
+	padding: 10px 15px;
+	border: 1px solid rgba(77, 227, 198, 1);
+}
+
+#write{
+    height:85px;
+    width:500px;
+	position: relative;
+	/*top:205px;
+	left:405px;*/
+	z-index: 1;
 
 }
-/* END index CSS*/
+#post_submit{
+ position: relative;
+  /*  top:150px;
+    left:400px;*/
+}
 
+#profileWrapper {
+	width: 970px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+
+#profileSidebar, #postFeed {
+	float: left;
+	display: block;
+}
 #profileSidebar {
-	width: 219px;
+	width: 220px;
 	min-height: 600px;
-	border-right: 1px solid gray;
 	padding-right: 20px;
+	padding-left: 30px;
+	background-color: gray;
+}
+
+#profilePic {
+	width: 220px;
+	height: 220px;
+	background: url(images/profile_pic.jpg);
+	background-size: cover;
 }
 
 #postFeed {
-	width: 680px;
-	height: 300px;
 	padding-left: 20px;
+	border-left: 1px solid gray;
 }
 /*END profile CSS*/
 
