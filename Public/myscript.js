@@ -1,19 +1,17 @@
 $(document).ready(function(){
-
-$("#f10").html("Hello World");
-
-
-
+a=11;
 $("#post_submit").click(function(){
 
 //$(".post").animate({"top":"+=100px"}, 1000);
 
 $(".post:last-child").remove();
 
-$("#feed").prepend("<div class='post'> hahaha</div>")
-
+$("#feed").prepend("<div class='post' id='f"+a+"'></div>");
+$("#f"+(a-1)).html($("#write").val());
+a = a+1;
 
 });
+
 
 
 

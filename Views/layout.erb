@@ -16,11 +16,21 @@
 		<%=yield%>
 
 		<div id="header">
+		    <% if session[:user_id] != nil %> 
+			<a href="/profile"><img id="logo" src="images/logo.png"></a>
+			<% else %>
 			<a href="/"><img id="logo" src="images/logo.png"></a>
+			<% end %>
 			<ul>
 				<li><a href="/profile">My Posts</a></li>
 				<li><a href="/profile">My Profile</a></li>
-				<li><a href="/">Sign In</a></li>
+				<li> <% if session[:user_id] != nil %> 
+                     <a href="/sign_out"> <%= "Sign Out" %></a>
+                   <% else %>
+				  <a href="/"> <%= "Sign In" %> </a>
+				 
+				  <% end %>
+				  </li>
 			</ul>
 		</div>
 

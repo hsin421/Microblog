@@ -9,7 +9,7 @@ enable :sessions
 use Rack::Flash, :sweep => true
 set :sessions => true
 
-set :database, "sqlite3:microblog.sqlite3"
+configure(:development){set :database, "sqlite3:microblog.sqlite3"}
 
 helpers do
   def current_user
@@ -52,7 +52,12 @@ session[:user_id] = @user.id
 end
 
 get '/profile' do
+  if current_user != nil
 	erb :profile
+  else
+    redirect '/'
+  end
+
 end
 
 get '/sign_up' do
@@ -60,6 +65,7 @@ get '/sign_up' do
 end
 
 get '/sign_out' do
+  session[:user_id] = nil
   flash[:greeting]="Goodbye! Come again!"
   redirect '/'
 
