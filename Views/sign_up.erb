@@ -1,5 +1,10 @@
+<div id="signUpWrapper">
 <form method='POST' action='/sign_up'>
      <h2>Sign Up Here</h2>
+     <% for a in [:notice, :alert, :error, :greeting] do if !flash[a].nil? %>
+      <div id="flash"><b><%= flash[a] %></b></div>
+    <% end %>
+    <% end %>
   <div>
     <input type="text" name = "[user]uname"required/>
     <label>User Name</label>
@@ -12,6 +17,6 @@
     <input type="text" name ="[user]email" required/>
     <label>Email</label>
   </div>
-  
      <button>Create</button>
      </form>
+</div>

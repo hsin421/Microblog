@@ -22,6 +22,7 @@ get '/' do
 end
 
 post '/sign_in' do
+
   puts params.inspect
   if User.find_by(uname: params[:user]["uname"]) != nil
       @user = User.find_by(uname: params[:user]["uname"])
@@ -64,7 +65,10 @@ get '/sign_out' do
 
 end  
 
+
 dblength = User.last.id.to_i
+
+
 
 #To establish following/follower
 #Still need to put '/follow#{a}' link on the page 
