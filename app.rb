@@ -23,12 +23,12 @@ end
 
 post '/sign_in' do
 
-  puts params.inspect
+  #puts params.inspect
   if User.find_by(uname: params[:user]["uname"]) != nil
       @user = User.find_by(uname: params[:user]["uname"])
   
-  puts "user pwd is #{@user.pwd} "
-  puts "params pwd is #{params[:user]["pwd"]}"
+  # puts "user pwd is #{@user.pwd} "
+  # puts "params pwd is #{params[:user]["pwd"]}"
     	if @user.pwd == params[:user]["pwd"]
     		session[:user_id] = @user.id
     		redirect '/profile'
@@ -90,7 +90,39 @@ get '/sign_out' do
 
 end  
 
+#returns an array of posts the user's following generated
+def Postgrabber(my_user)
+  
+  my_array = []
+  for f in my_user.followings
 
+  
+   for p in User.find(f.id).posts
+  
+    my_array << p 
+    
+    
+end
+end
+
+  return my_array
+end
+
+#number from 0 to 9, each number returning a posts from previous array
+def Postgenerator(user, number)
+  a=Postgrabber(user)
+  length = a.length
+  if length >=10
+    return a[number]
+  elsif length <10
+    if number <= length
+      return a[number]
+    else return nil
+    end
+  end
+end
+
+      
 # dblength = User.last.id.to_i
 
 
