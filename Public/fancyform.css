@@ -19,16 +19,16 @@ html {
 form {
   position: relative;
   display: inline-block;
-  max-width: 700px;
-  min-width: 500px;
+  max-width: 500px;
+  min-width: 400px;
   box-sizing: border-box;
   padding: 30px 25px;
-  background-color: white;
+  background-color: rgba(255,255,255,1);
   border-radius: 15px;
   margin: 150px 0;
   left: 50%;
   -webkit-transform: translate( -50% , 0 );
-  box-shadow: 0px 0px 8px #b8b8b8;
+  box-shadow: 1px 1px 8px #404040;
   text-align: center;
 }
     
@@ -135,10 +135,10 @@ form {
 
 }
 
-#signin {
+/*#signin {
   position:absolute;
   top: 500px;
   left: 200px;
   background-color: white;
   text-decoration: none;
-}
+}*/
