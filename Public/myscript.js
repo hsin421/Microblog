@@ -41,9 +41,6 @@ for(a=1; a<11; a++){
 	}
 }
 
-
-
-
 	// turn border off of empty post divs
 	$('div.post:empty').hide();
 

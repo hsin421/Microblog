@@ -142,7 +142,7 @@ html, body {
 	position: relative;
 	overflow: auto;
 }
-#profileSidebar, #postFeed {
+#profileSidebar, #postFeed, #profileEditContent{
 	float: left;
 	display: block;
 	margin-bottom: 30px;
@@ -151,19 +151,31 @@ html, body {
 	width: 220px;
 	padding-right: 25px;
 	padding-left: 30px;
+	text-align: center;
 }
-#sidebarLinks{
-	padding-top: 20px;
+#sidebarLinks li {
+	margin-bottom: 5px;
+}
+#userProfileWelcome{
+	font-weight: bold;
+	font-size: 18px;
+}
+#followerlist, #followinglist {
+	cursor: pointer;
 }
 #profilePic {
-	width: 220px;
-	height: 220px;
+	width: 218px;
+	height: 218px;
 	background: url(images/profile_pic.jpg);
 	background-size: cover;
+	border-radius: 100%;
+	margin-bottom: 10px;
+	border: 2px solid rgba(77, 227, 198, 1);
 }
-#postFeed {
+#postFeed, #profileEditContent {
 	padding-left: 25px;
 	border-left: 1px dashed #888;
+	min-height: 400px;
 }
 #write{
     height:100px;
@@ -180,7 +192,7 @@ html, body {
 #write:focus {
 	outline: none;
 }
-#post_submit {
+#post_submit, #follow_button, #delete_account, #make_changes {
 	position: relative;
     margin: 8px 0 0px 0;
     background-color: white;
@@ -193,12 +205,25 @@ html, body {
     color: rgba(77, 227, 198, 1);
     font-weight: 100;
     letter-spacing: 0.01em;
-    position: relative;
     font-family: arial, sans-serif;
 }
 #post_submit:hover, #post_submit:focus, #post_submit:active {
       color:white;
       background-color: rgba(77, 227, 198, 1);
+      outline:0;
+}
+#follow_button {
+    margin-bottom: 15px;
+    background-color: rgba(77, 227, 198, 1);
+    font-size: 17px;
+    padding: 17px 12px;
+    border-radius: 60px;
+    color: white;
+}
+#follow_button:hover, #follow_button:focus, #follow_button:active {
+      color:rgba(77, 227, 198, 1);
+      background-color: white;
+      border: 1px solid rgba(77, 227, 198, 1);
       outline:0;
 }
 .post {
@@ -209,7 +234,7 @@ html, body {
 	margin-bottom: 20px;
 	border: 1px solid rgba(77, 227, 198, 1);*/
 	/*border-top: 1px solid rgba(77, 227, 198, 1);*/
-	border-bottom: 1px solid rgba(77, 227, 198, 1);
+	border-bottom: 1px solid #888;
 	font-size: 14px;
 }
 .postDetails li {
@@ -230,4 +255,82 @@ html, body {
 }
 
 /*END profile CSS*/
+
+/*BEGIN profile_edit CSS*/
+#postFeed h2, #profileEditContent h2{
+	font-size: 28px;
+	color:#888;
+	padding-bottom: 20px;
+}
+
+#profileEditContent {
+	width:580px;
+}
+
+#profileEditForm button {
+	border-color: red;
+	color: red;
+	margin: 0;
+	clear: both;
+}
+#profileEditForm button:hover {
+	border-color: red;
+	background-color: red;
+	color:white;
+}
+
+#profileEditForm label {
+      letter-spacing: 0.01em;
+      font-size: 17px;
+      padding-bottom: 20px;
+      pointer-events: none;
+    }
+      
+
+#profileEditForm input[type="text"], #profileEditForm input[type="password"], #profileEditForm input[type="email"] {
+      background-color: none;
+      border: 1px solid rgba(77, 227, 198, 1);
+      font-size: 17px;
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 60px;
+      color: rgba(77, 227, 198, 1);
+      font-weight: 100;
+      letter-spacing: 0.01em;
+      font-family: arial, sans-serif;
+      margin: 8px 0 25px 0;
+      }
+
+#profileEditForm input:focus {
+	outline: none;
+	background: rgba(77, 227, 198, 1);
+	border: 1px solid rgba(77, 227, 198, 1);
+	color: white;
+}
+        
+#profileEditForm input:focus:invalid {
+	border: 1px solid red;
+}
+#delete_account{
+	border: 1px solid red;
+	color:red;
+}
+#delete_account:hover, #delete_account:focus, #delete_account:active {
+      color:white;
+      background-color: red;
+      outline:0;
+}
+#make_changes {
+	margin-bottom: 20px;
+}
+#make_changes:hover, #make_changes:focus, #make_changes:active {
+      color:white;
+      background-color: rgba(77, 227, 198, 1);
+      outline:0;
+}
+/*END profile_edit CSS*/
+
+
+
+
 
