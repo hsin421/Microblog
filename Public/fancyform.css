@@ -16,7 +16,7 @@ html {
   background-color: rgba(245,76,99,1)
 }*/
 
-form {
+#signInUpForm {
   position: relative;
   display: inline-block;
   max-width: 500px;
@@ -119,15 +119,13 @@ form {
       letter-spacing: 0.01em;
       position: relative;
       z-index: 1;
+      font-family: arial, sans-serif;
       }
-
-    
 
       input:focus {
         outline: none;
         background: rgba(77, 227, 198, 1);
         border: 1px solid rgba(77, 227, 198, 1);
-
         color: white;
         margin-top: 30px;}
         
@@ -138,6 +136,7 @@ form {
 
       input:focus:invalid {
        border: 1px solid red;
+       margin-top: 30px;
       }
 
           
