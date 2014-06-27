@@ -30,6 +30,9 @@
     <% end %>
 	<div id="profileSidebar">
 		<div id="profilePic"></div>
+
+		<input formMethod='POST' formAction='/profile' id="follow_button" type="submit" value="Follow Me!">
+
 		<ul id="sidebarLinks">
 			<li id="userProfileWelcome">Hello! User: @<%= current_user.uname %></li>
 			<li><a href="/profile_edit">Edit Profile</a></li>
@@ -48,6 +51,7 @@
 		</ul>
 	</div>
 	<div id="postFeed">
+		<h2>Recent Stories</h2>
 		<form id="makePost" method='POST' action='/profile'>
 			<textarea id="write" name="body" placeholder="Start typing your new post here..."></textarea>
 			<br/>

@@ -48,7 +48,7 @@ post '/sign_up' do
   
   if User.find_by(uname: params[:user]["uname"]) == nil
 
-  if params[:user]["pwd"] == params[:user]["cfpwd"]  
+  if params[:user]["pwd"] == params[:cfpwd]  
 
   User.create(params[:user])
   @user = User.find_by(params[:user])
@@ -83,9 +83,19 @@ post '/profile' do
 end
 
 get '/profile_edit' do
-
   erb :profile_edit
 end
+
+
+
+# post '/profile_edit' do
+#   if current_user.fname == nil
+#     current_user("fname"=>params[:user]["fname"])
+#   end
+#   redirect '/profile_edit'
+# end
+
+
 
 get '/sign_up' do
 	erb :sign_up

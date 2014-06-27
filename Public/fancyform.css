@@ -32,7 +32,7 @@ html {
   text-align: center;
 }
     
-  form h2 {
+  #signInUpForm h2 {
     color: #888;
     font-weight: bold;
     font-size: 18px;
@@ -42,7 +42,7 @@ html {
 
   }
       
-  button {
+  #signInUpForm button {
     transition: all, 0.25s, cubic-bezier(.53,.01,.35,1.5);
     margin-top: 25px;
     background-color: white;
@@ -62,7 +62,7 @@ html {
   }
     
 
-    button:hover, button:focus, button:active {
+    #signInUpForm button:hover, #signInUpForm button:focus, #signInUpForm button:active {
       color:white;
       background-color: rgba(77, 227, 198, 1);
       outline:0;
@@ -84,7 +84,7 @@ html {
     .question:last-of-type{
       padding-bottom: 0;
       }*/
-    label {
+    #signInUpForm label {
       transition: all, 0.25s, cubic-bezier(.53,.01,.35,1.5);
       transform-origin: left center;
       color: #888;
@@ -101,7 +101,7 @@ html {
     }
       
 
-    input[type="text"], input[type="password"], input[type="email"] {
+#signInUpForm input[type="text"], #signInUpForm input[type="password"], #signInUpForm input[type="email"] {
       transition: all, 0.25s, cubic-bezier(.53,.01,.35,1.5);
       appearance: none;
       background-color: none;
@@ -121,29 +121,29 @@ html {
       font-family: arial, sans-serif;
       }
 
-      input:focus {
+      #signInUpForm input:focus {
         outline: none;
         background: rgba(77, 227, 198, 1);
         border: 1px solid rgba(77, 227, 198, 1);
         color: white;
         margin-top: 30px;}
         
-      input:valid {
+      #signInUpForm input:valid {
         margin-top: 30px;
       }
 
 
-      input:focus:invalid {
+      #signInUpForm input:focus:invalid {
        border: 1px solid red;
        margin-top: 30px;
       }
 
           
-      input:focus ~ label {
+      #signInUpForm input:focus ~ label {
         -webkit-transform: translate( 0 , -35px );
       }
       
-      input:valid ~ label {
+      #signInUpForm input:valid ~ label {
 
         text-transform: uppercase;
         font-style: italic;
