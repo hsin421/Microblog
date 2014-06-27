@@ -121,12 +121,20 @@ def Postgenerator(user, number)
   a=Postgrabber(user)
   length = a.length
   if length >=10
-    return a[number]
+    return a[length-1-9+number]
   elsif length <10
-    if number <= length
-      return a[number]
+    if number >= 10-length
+      return a[length-1-9+number]
     else return nil
     end
+  end
+end
+
+def superPostgenerator(user, number)
+  if Postgenerator(user, number) != nil
+    return Postgenerator(user, number).body
+  else
+    return ""
   end
 end
       

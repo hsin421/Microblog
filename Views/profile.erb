@@ -20,17 +20,6 @@
 
 </div> -->
 
-<% if Postgenerator(current_user,0) == nil %>
-<div></div>
-<% else %>
-<div><%=  Postgenerator(current_user,0).body     %></div>
-<% end %>
-
-<% if Postgenerator(current_user,1) == nil %>
-<div></div>
-<% else %>
-<div ><%=  Postgenerator(current_user,1).body     %></div>
-<% end %>
 
 
 <div id="profileWrapper">
@@ -42,10 +31,20 @@
 	<div id="profileSidebar">
 		<div id="profilePic"></div>
 		<ul id="sidebarLinks">
-			<li id="userProfileWelcome">USERNAME HERE</li>
+			<li id="userProfileWelcome">Hello! User: @<%= current_user.uname %></li>
 			<li><a href="/profile_edit">Edit Profile</a></li>
-			<li>Following</li>
-			<li>Followers</li>
+			<li id="followinglist">Following</li>
+			<li><div id="slidedown">  <% for a in current_user.followings %>
+                                      <%= User.find(a.id).uname %>
+                                      <br>
+                                      <% end %> 
+			 </div></li>
+			<li id="followerlist">Followers</li>
+			<li><div id="slidedown2">  <% for a in current_user.followers %>
+                                      <%= User.find(a.id).uname %>
+                                      <br>
+                                      <% end %> 
+			 </div></li>
 		</ul>
 	</div>
 	<div id="postFeed">
@@ -55,16 +54,16 @@
 			<input formMethod='POST' formAction='/profile' id="post_submit" type="submit" value="Post" >
 		</form>
 		<div id="feed">
-			<div class="post" id="f10">#10</div>
-			<div class="post" id="f2">#2 </div>
-			<div class="post" id="f3">#3</div>
-			<div class="post" id="f4">#4</div>
-			<div class="post" id="f5">#5</div>
-			<div class="post" id="f6">#6</div>
-			<div class="post" id="f7">#7</div>
-			<div class="post" id="f8">#8</div>
-			<div class="post" id="f9">#9</div>
-			<div class="post" id="f1">#1</div>
+			<div class="post" id="f10"><%= superPostgenerator(current_user,9) %></div>
+			<div class="post" id="f2"><%= superPostgenerator(current_user,8) %> </div>
+			<div class="post" id="f3"><%= superPostgenerator(current_user,7) %></div>
+			<div class="post" id="f4"><%= superPostgenerator(current_user,6) %></div>
+			<div class="post" id="f5"><%= superPostgenerator(current_user,5) %></div>
+			<div class="post" id="f6"><%= superPostgenerator(current_user,4) %></div>
+			<div class="post" id="f7"><%= superPostgenerator(current_user,3) %></div>
+			<div class="post" id="f8"><%= superPostgenerator(current_user,2) %></div>
+			<div class="post" id="f9"><%= superPostgenerator(current_user,1) %></div>
+			<div class="post" id="f1"><%= superPostgenerator(current_user,0) %></div>
 		</div>
 	</div>
 </div>
