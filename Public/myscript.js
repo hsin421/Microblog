@@ -41,13 +41,8 @@ for(a=1; a<11; a++){
 	}
 }
 
-function User(){
 
-	
-	$("#profileSidebar").fadeOut("slow")
-};
 
-	});
 
 	// turn border off of empty post divs
 	$('div.post:empty').hide();

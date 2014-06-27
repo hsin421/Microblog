@@ -1,0 +1,49 @@
+
+
+<div id="profileWrapper">
+
+ <% for a in [:notice, :alert, :error, :greeting] do if !flash[a].nil? %>
+      <div id="flash"><b><%= flash[a] %></b></div>
+    <% end %>
+    <% end %>
+	<div id="profileSidebar">
+		<div id="profilePic"></div>
+		<ul id="sidebarLinks">
+			<li id="userProfileWelcome"> @<%= User.find(@id).uname %></li>
+			<li><a href="/profile_edit">Edit Profile</a></li>
+			<li id="followinglist">Following</li>
+			<li><div id="slidedown">  <% for a in User.find(@id).followings %>
+                                      <%= "<a href='/users/#{a.id}'> #{User.find(a.id).uname} </a>" %>
+                                      <br>
+                                      <% end %> 
+			 </div></li>
+			<li id="followerlist">Followers</li>
+			<li><div id="slidedown2">  <% for a in User.find(@id).followers %>
+                                      <%= "<a href='/users/#{a.id}'> #{User.find(a.id).uname} </a>" %>
+                                      <br>
+                                      <% end %> 
+			 </div></li>
+		</ul>
+	</div>
+	<div id="postFeed">
+		<form id="makePost" method='POST' action='/profile'>
+			<textarea id="write" name="body" placeholder="Start typing your new post here..."></textarea>
+			<br/>
+			<input id="post_submit" type="submit" value="Post" >
+		</form>
+		<div id="feed">
+
+			<div class="post" id="f3"><%= superselfpost(User.find(@id),9) %></div>
+			<div class="post" id="f4"><%= superselfpost(User.find(@id),8) %></div>
+			<div class="post" id="f3"><%= superselfpost(User.find(@id),7) %></div>
+			<div class="post" id="f4"><%= superselfpost(User.find(@id),6) %></div>
+			<div class="post" id="f5"><%= superselfpost(User.find(@id),5) %></div>
+			<div class="post" id="f6"><%= superselfpost(User.find(@id),4) %></div>
+			<div class="post" id="f7"><%= superselfpost(User.find(@id),3) %></div>
+			<div class="post" id="f8"><%= superselfpost(User.find(@id),2) %></div>
+			<div class="post" id="f9"><%= superselfpost(User.find(@id),1) %></div>
+			<div class="post" id="f1"><%= superselfpost(User.find(@id),0) %></div>
+
+		</div>
+	</div>
+</div>
