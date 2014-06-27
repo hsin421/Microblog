@@ -53,22 +53,15 @@ html, body {
 	padding: 0;
 	font-family: Arial, sans-serif;
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
+	background: url(images/pattern.jpg) center center repeat;
+	background-attachment: fixed;
 }
 
 #flash {
-	/*position:absolute;
-	top:100px;
-	left:400px;*/
 	color:red;
 	padding-bottom: 10px;
-
-/*	padding: 10px;
-	background-color: rgba(255,255,255,1);
-	border-radius: 10px;
-	box-shadow: 1px 1px 8px #404040;*/
 }
-
 
 #profileWrapper #flash {
 	color:rgba(77, 227, 198, 1);
@@ -76,12 +69,14 @@ html, body {
 	padding-bottom: 10px;
 }
 
+#indexWrapper #flash {
+	color:#888;
+}
 
 #wrapper {
 	width: 100%;
 	margin: 0 auto; 
-	height: 100%;
-    height: auto !important;
+    min-height:100%;
 }
 
 #header {
@@ -94,7 +89,7 @@ html, body {
 	color: white;
 	background-color: rgba(77, 227, 198, 1);
 	/*background-color: #FFAE59;*/
-	/*box-shadow: 0px 3px 5px #b8b8b8;*/
+	box-shadow: 0px 0px 8px #747474;
 }
 #header li {
 	display: inline-block;
@@ -127,6 +122,7 @@ html, body {
 	background: url(images/pets2.jpg) center center repeat;
 	background-size: cover;
 	height: 100vh;
+	overflow: auto;
 }
 #signInForm p {
 	font-size: 13px;
@@ -136,58 +132,43 @@ html, body {
 
 
 /*BEGIN profile CSS*/
-
-/*#feed{
-	
-	position:absolute;
-	top:200px;
-	left:400px;
-}
-.post {
-	position:relative;
-	height:80px;
-	width:200px;
-	border:solid;
-	border-radius: 15px;
-	margin:10px;
-}
-
-#write{
-    height:85px;
-    width:205px;
-	position:absolute;
-	top:205px;
-	left:405px;
-	z-index: 1;
-
-}
-#post_submit{
-    position:absolute;
-    top:150px;
-    left:400px;
-}*/
-
-/*#formFeed{
+#profileWrapper {
+	width: 970px;
+	margin: 0 auto;
+	padding-top: 100px;
+	background: rgba(255,255,255,.6);
+	min-height: auto;
+	box-shadow: 0px 0px 6px #b8b8b8;
 	position: relative;
+	overflow: auto;
 }
-
-#feed{
-	position: relative;
-}*/
-.post {
-	width:590px;
-	border-radius: 15px;
-	background-color: white;
-	margin-bottom: 20px;
-	padding: 10px 15px;
-	border: 1px solid rgba(77, 227, 198, 1);
-	font-size: 14px;
+#profileSidebar, #postFeed {
+	float: left;
+	display: block;
+	margin-bottom: 30px;
 }
-
+#profileSidebar {
+	width: 220px;
+	padding-right: 25px;
+	padding-left: 30px;
+}
+#sidebarLinks{
+	padding-top: 20px;
+}
+#profilePic {
+	width: 220px;
+	height: 220px;
+	background: url(images/profile_pic.jpg);
+	background-size: cover;
+}
+#postFeed {
+	padding-left: 25px;
+	border-left: 1px dashed #888;
+}
 #write{
     height:100px;
-    width:590px;
-    max-width: 590px;
+    width:600px;
+    max-width: 600px;
     background-color: white;
 	border: 1px solid rgba(77, 227, 198, 1);
 	padding: 10px 15px;
@@ -198,40 +179,10 @@ html, body {
 }
 #write:focus {
 	outline: none;
-	background: white;
-}
-#profileWrapper {
-	width: 970px;
-	margin: 0 auto;
-	padding-top: 100px;
-}
-
-#profileSidebar, #postFeed {
-	float: left;
-	display: block;
-	margin-bottom: 30px;
-}
-#profileSidebar {
-	width: 220px;
-	min-height: 600px;
-	padding-right: 25px;
-	padding-left: 30px;
-}
-
-#profilePic {
-	width: 220px;
-	height: 220px;
-	background: url(images/profile_pic.jpg);
-	background-size: cover;
-}
-
-#postFeed {
-	padding-left: 25px;
-	border-left: 1px dashed #888;
 }
 #post_submit {
-	 position: relative;
-    margin: 5px 0 20px 0;
+	position: relative;
+    margin: 8px 0 0px 0;
     background-color: white;
     border: 1px solid rgba(77, 227, 198, 1);
     line-height: 0;
@@ -249,10 +200,33 @@ html, body {
       color:white;
       background-color: rgba(77, 227, 198, 1);
       outline:0;
-    }
-
-#sidebarLinks{
-	padding-top: 20px;
+}
+.post {
+	width:600px;
+	background-color: white;
+	padding: 20px 15px;
+	/*border-radius: 10px;
+	margin-bottom: 20px;
+	border: 1px solid rgba(77, 227, 198, 1);*/
+	/*border-top: 1px solid rgba(77, 227, 198, 1);*/
+	border-bottom: 1px solid rgba(77, 227, 198, 1);
+	font-size: 14px;
+}
+.postDetails li {
+	display:inline;
+	font-size: 17px;
+	font-weight: bold;
+	padding-bottom: 12px;
+}
+.postsUname {
+	float: left;
+}
+.postsDatetime{
+	float: right;
+	color: #888;
+}
+.postsBody {
+	clear: both;
 }
 
 /*END profile CSS*/

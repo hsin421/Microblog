@@ -1,11 +1,13 @@
 $(document).ready(function(){
+
 //a=11;
 $("#slidedown").hide();
 $("#slidedown2").hide();
 
 //$("#post_submit").click(function(){
 
-//$(".post").animate({"top":"+=100px"}, 1000);
+
+	//$(".post").animate({"top":"+=100px"}, 1000);
 
 //$(".post:last-child").remove();
 
@@ -45,7 +47,10 @@ function User(){
 	$("#profileSidebar").fadeOut("slow")
 };
 
+	});
 
+	// turn border off of empty post divs
+	$('div.post:empty').hide();
 
 });
 
