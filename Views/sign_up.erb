@@ -1,5 +1,5 @@
 <div id="signUpWrapper">
-<form method='POST' action='/sign_up'>
+<form id="signInUpForm" method='POST' action='/sign_up'>
      <h2>Sign Up Here</h2>
      <% for a in [:notice, :alert, :error, :greeting] do if !flash[a].nil? %>
       <div id="flash"><b><%= flash[a] %></b></div>

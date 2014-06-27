@@ -65,7 +65,6 @@ post '/sign_up' do
   redirect '/sign_up'
 end
 
-
 end
 
 get '/profile' do
@@ -74,10 +73,17 @@ get '/profile' do
   else
     redirect '/'
   end
+end
 
+#gets post from profile page
+post '/profile' do
+  puts params.inspect
+  Post.create({"body"=>params["body"], "user_id"=>current_user.id, "timecreated"=>Time.now})
+  redirect '/profile'
 end
 
 get '/profile_edit' do
+
   erb :profile_edit
 end
 
