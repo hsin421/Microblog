@@ -172,6 +172,17 @@ html, body {
 	margin-bottom: 10px;
 	border: 2px solid rgba(77, 227, 198, 1);
 }
+#profilePicUser {
+	width: 218px;
+	height: 218px;
+	background: url(images/profile_pic.jpg);
+	background-size: cover;
+	border-radius: 100%;
+	margin-bottom: 10px;
+	border: 2px solid rgba(77, 227, 198, 1);
+}
+
+
 #postFeed, #profileEditContent {
 	padding-left: 25px;
 	border-left: 1px dashed #888;

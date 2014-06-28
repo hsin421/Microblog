@@ -19,9 +19,9 @@
 
 		<div id="header">
 		    <% if session[:user_id] != nil %> 
-			<a href="/profile"><img id="logo" src="images/logo.png"></a>
+			<a href="/profile"><img id="logo" src="/images/logo.png"></a>
 			<% else %>
-			<a href="/"><img id="logo" src="images/logo.png"></a>
+			<a href="/"><img id="logo" src="/images/logo.png"></a>
 			<% end %>
 			<ul>
 				<li><a href="/profile">My Posts</a></li>

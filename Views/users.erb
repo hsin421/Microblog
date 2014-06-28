@@ -7,8 +7,8 @@
     <% end %>
     <% end %>
 	<div id="profileSidebar">
+	<div id="profilePicUser"></div>
 	    <% if User.find(current_user.id).followings.find_by("following_id"=>@id) == nil %>
-		<div id="profilePic"></div>
 		<%= "<a href='/follow/#{@id}'> <input id='follow_button' type='submit' value='Follow Me!'> </a>"%>
 		<% else %>
 		<input id="follow_button2" type="submit" value="Following!">

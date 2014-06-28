@@ -166,7 +166,16 @@ def Postgrabber(my_user)
     end
    end
   end
-  return array_want
+  no_repeat = []
+  lg = array_want.length
+  no_repeat << array_want[0]
+  for a in (0...lg)
+    if array_want[a] != array_want[a+1]
+      no_repeat << array_want[a+1]
+    end
+  end
+
+  return no_repeat
 end
 
 #number from 0 to 9, each number returning a posts from previous array
