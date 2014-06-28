@@ -64,9 +64,9 @@ html, body {
 }
 
 #profileWrapper #flash {
-	color:rgba(77, 227, 198, 1);
+	color: red;
 	text-align: center;
-	padding-bottom: 10px;
+	padding-bottom: 30px;
 }
 
 #indexWrapper #flash {
@@ -119,7 +119,7 @@ html, body {
 
 /*BEGIN index CSS*/
 #indexWrapper, #signUpWrapper {
-	background: url(images/pets2.jpg) center center repeat;
+	background: url(images/pets.jpg) center center repeat;
 	background-size: cover;
 	height: 100vh;
 	overflow: auto;
@@ -285,7 +285,7 @@ html, body {
 
 /*BEGIN profile_edit CSS*/
 #postFeed h2, #profileEditContent h2{
-	font-size: 28px;
+	font-size: 26px;
 	color:#888;
 	padding-bottom: 20px;
 }
