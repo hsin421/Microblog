@@ -187,7 +187,7 @@ end
 def superPostgenerator(user, number)
   if Postgenerator(user, number) != nil
     return "<ul class='postDetails'>
-            <li class='postsUname'><a href='/users/@{user.id}'>@#{User.find(Postgenerator(current_user,number).user_id).uname} </a></li>
+            <li class='postsUname'><a href='/users/#{user.id}'>@#{User.find(Postgenerator(current_user,number).user_id).uname} </a></li>
             <li class='postsDatetime'>#{Postgenerator(current_user,number).timecreated.to_s[0..15]}</li>
         </ul>
         <div class='postsBody'>
@@ -202,6 +202,7 @@ end
 def followinglistgenerator(user, id)
    b=[]
    lg=User.find(id).followings.length
+   if lg != 0
    if User.find(id).followings[0].following_id != current_user.id
    b << User.find(id).followings[0]
    end
@@ -211,12 +212,14 @@ def followinglistgenerator(user, id)
     end 
      
   end
+  end
   return b
 end
 #generates a list of followers without repeat & without self
 def followerlistgenerator(user, id)
    b=[]
    lg=User.find(id).followers.length
+   if lg != 0
    if User.find(id).followers[0].follower_id != current_user.id
    b << User.find(id).followers[0]
    end
@@ -227,6 +230,7 @@ def followerlistgenerator(user, id)
       
     end
   end
+end
   return b
 end
     
@@ -234,10 +238,10 @@ end
 get '/users/:id' do
   @id = params[:id]
   if @id == current_user.id
-    erb :profile
+  erb :profile
   else
   erb :users
-end
+  end
 end
 
 #for following and follower relationships: Following(id:3, user_id:5) means 5 is following 3
