@@ -57,6 +57,16 @@ html, body {
 	background: url(images/pattern.jpg) center center repeat;
 	background-attachment: fixed;
 }
+a {
+	text-decoration: none;
+}
+a:hover {
+	opacity: .6;
+	text-decoration: none;
+}
+a:visited, a:active {
+	color: black;
+}
 
 #flash {
 	color:red;
@@ -101,13 +111,9 @@ html, body {
 }
 #header a {
 	color: white;
-	text-decoration: none;
 }
 #header a:hover {
-	text-decoration: underline;
-}
-#header h1 a:hover {
-	text-decoration: none;
+	opacity: .8;
 }
 #logo {
 	width: 80px;
@@ -152,16 +158,28 @@ html, body {
 	padding-right: 25px;
 	padding-left: 30px;
 	text-align: center;
+	font-weight: bold;
+}
+#slidedown, #slidedown2 {
+	font-weight: normal;
+	line-height: 20px;
 }
 #sidebarLinks li {
 	margin-bottom: 5px;
 }
+#sidebarLinks a {
+	color: black;
+}
 #userProfileWelcome{
-	font-weight: bold;
-	font-size: 18px;
+	font-size: 20px;
+	padding-bottom: 10px;
 }
 #followerlist, #followinglist {
 	cursor: pointer;
+	font-weight: bold;
+}
+#followerlist:hover, #followinglist:hover {
+	opacity: .7;
 }
 #profilePic {
 	width: 218px;
@@ -203,7 +221,7 @@ html, body {
 #write:focus {
 	outline: none;
 }
-#post_submit, #follow_button, #delete_account, #make_changes {
+#post_submit, #follow_button, #follow_button2, #delete_account, #make_changes {
 	position: relative;
     margin: 8px 0 0px 0;
     background-color: white;
@@ -291,7 +309,7 @@ html, body {
 }
 
 #profileEditContent {
-	width:580px;
+	width:600px;
 }
 
 #profileEditForm button {
@@ -354,6 +372,10 @@ html, body {
       color:white;
       background-color: rgba(77, 227, 198, 1);
       outline:0;
+}
+#profileEditForm input:last-child {
+	margin-top: 0px;
+	margin-bottom: 25px;
 }
 /*END profile_edit CSS*/
 

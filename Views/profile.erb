@@ -10,7 +10,6 @@
 		
 		<ul id="sidebarLinks">
 			<li id="userProfileWelcome">Hello! @<%= current_user.uname %></li>
-			<li><a href="/profile_edit">Edit Profile</a></li>
 			<li id="followinglist">Following</li>
 			<li><div id="slidedown">  <% for a in followinglistgenerator(current_user, current_user.id) %>
                                       <%= "<a href='/users/#{a.following_id}'> #{User.find(a.following_id).uname} </a>" %>
@@ -23,6 +22,8 @@
                                       <br>
                                       <% end %> 
 			 </div></li>
+			<li><a href="#">My Posts</a></li>
+			 <li><a href="/profile_edit">Edit Profile</a></li>
 		</ul>
 	</div>
 	<div id="postFeed">
