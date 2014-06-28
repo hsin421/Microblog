@@ -144,20 +144,16 @@ def superselfpost(user, number)
   end
 end
 
-#returns an array of posts the user's following generated
+#returns an array of posts the user's following generated, sorted by time created in ascending order
 def Postgrabber(my_user)
   
   my_array = []
   for f in my_user.followings
-
+   for p in User.find(f.following_id).posts
   
-   for p in User.find(f.id).posts
-  
-    my_array << p 
-    
-    
-end
-end
+    my_array << p     
+    end
+  end
   array_time = []
   for a in my_array
    array_time << a.timecreated
@@ -168,7 +164,7 @@ end
     if a == b.timecreated
       array_want << b
     end
-  end
+   end
   end
   return array_want
 end
@@ -187,10 +183,11 @@ def Postgenerator(user, number)
   end
 end
 
+#puts Postgenerator in correct html output
 def superPostgenerator(user, number)
   if Postgenerator(user, number) != nil
     return "<ul class='postDetails'>
-            <li class='postsUname'>@#{User.find(Postgenerator(current_user,number).user_id).uname}</li>
+            <li class='postsUname'><a href='/users/@{user.id}'>@#{User.find(Postgenerator(current_user,number).user_id).uname} </a></li>
             <li class='postsDatetime'>#{Postgenerator(current_user,number).timecreated.to_s[0..15]}</li>
         </ul>
         <div class='postsBody'>
@@ -201,18 +198,56 @@ def superPostgenerator(user, number)
   end
 end
 
+#generates a list of followings without repeat & without self
+def followinglistgenerator(user, id)
+   b=[]
+   lg=User.find(id).followings.length
+   if User.find(id).followings[0].following_id != current_user.id
+   b << User.find(id).followings[0]
+   end
+   for a in (0...lg-1)
+    if User.find(id).followings[a].following_id != User.find(id).followings[a+1].following_id && User.find(id).followings[a+1].following_id != current_user.id
+      b << User.find(id).followings[a+1]
+    end 
+     
+  end
+  return b
+end
+#generates a list of followers without repeat & without self
+def followerlistgenerator(user, id)
+   b=[]
+   lg=User.find(id).followers.length
+   if User.find(id).followers[0].follower_id != current_user.id
+   b << User.find(id).followers[0]
+   end
+   for a in (0...lg-1)
+    if User.find(id).followers[a].follower_id != User.find(id).followers[a+1].follower_id && User.find(id).followers[a+1].follower_id != current_user.id
+      b << User.find(id).followers[a+1]
+      
+      
+    end
+  end
+  return b
+end
+    
+#users page, redirect to profile if click on self
 get '/users/:id' do
   @id = params[:id]
+  if @id == current_user.id
+    erb :profile
+  else
   erb :users
+end
 end
 
 #for following and follower relationships: Following(id:3, user_id:5) means 5 is following 3
 # and Follower(id:3, user_id:5) means 3 is a follower of 5 
 # Hsin's convention, sorry for all confusions LOL
 get '/follow/:id' do
-  Following.create("id"=>params[:id], "user_id"=>current_user.id)
-  Follower.create("id"=>current_user.id, "user_id"=>params[:id])
-  
+  @id=params[:id]
+  Following.create("following_id"=>@id, "user_id"=>current_user.id)
+  Follower.create("follower_id"=>current_user.id, "user_id"=>@id)
+  redirect '/'
 end  
       
 

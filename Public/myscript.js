@@ -43,6 +43,17 @@ for(a=1; a<11; a++){
 
 	// turn border off of empty post divs
 	$('div.post:empty').hide();
+	$("#follow_button2").hide();
+
+	$("#follow_button").click(function(){
+       // $.ajax({
+       //        url: '/follow/#{@id}'
+       //        });
+       $("#follow_button").hide();
+       $("#follow_button2").show();
+
+
+	});
 
 });
 

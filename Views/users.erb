@@ -8,18 +8,20 @@
     <% end %>
 	<div id="profileSidebar">
 		<div id="profilePic"></div>
+		<%= "<a href='/follow/#{@id}'> <input id='follow_button' type='submit' value='Follow Me!'> </a>"%>
+		<input id="follow_button2" type="submit" value="Following!">
 		<ul id="sidebarLinks">
 			<li id="userProfileWelcome"> @<%= User.find(@id).uname %></li>
 			<li><a href="/profile_edit">Edit Profile</a></li>
 			<li id="followinglist">Following</li>
-			<li><div id="slidedown">  <% for a in User.find(@id).followings %>
-                                      <%= "<a href='/users/#{a.id}'> #{User.find(a.id).uname} </a>" %>
+			<li><div id="slidedown">  <% for a in followinglistgenerator(User.find(@id), @id) %>
+                                      <%= "<a href='/users/#{a.following_id}'> #{User.find(a.following_id).uname} </a>" %>
                                       <br>
                                       <% end %> 
 			 </div></li>
 			<li id="followerlist">Followers</li>
-			<li><div id="slidedown2">  <% for a in User.find(@id).followers %>
-                                      <%= "<a href='/users/#{a.id}'> #{User.find(a.id).uname} </a>" %>
+			<li><div id="slidedown2">  <% for a in followerlistgenerator(User.find(@id), @id) %>
+                                      <%= "<a href='/users/#{a.follower_id}'> #{User.find(a.follower_id).uname} </a>" %>
                                       <br>
                                       <% end %> 
 			 </div></li>

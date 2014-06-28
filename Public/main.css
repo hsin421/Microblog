@@ -220,7 +220,23 @@ html, body {
     border-radius: 60px;
     color: white;
 }
+
+#follow_button2 {
+    margin-bottom: 15px;
+    background-color: rgba(77, 227, 198, 1);
+    font-size: 17px;
+    padding: 17px 12px;
+    border-radius: 60px;
+    color: white;
+}
 #follow_button:hover, #follow_button:focus, #follow_button:active {
+      color:rgba(77, 227, 198, 1);
+      background-color: white;
+      border: 1px solid rgba(77, 227, 198, 1);
+      outline:0;
+}
+
+#follow_button2:hover, #follow_button2:focus, #follow_button2:active {
       color:rgba(77, 227, 198, 1);
       background-color: white;
       border: 1px solid rgba(77, 227, 198, 1);
