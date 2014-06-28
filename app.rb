@@ -187,7 +187,7 @@ end
 def superPostgenerator(user, number)
   if Postgenerator(user, number) != nil
     return "<ul class='postDetails'>
-            <li class='postsUname'><a href='/users/#{user.id}'>@#{User.find(Postgenerator(current_user,number).user_id).uname} </a></li>
+            <li class='postsUname'><a href='/users/#{Postgenerator(current_user,number).user_id}'>@#{User.find(Postgenerator(current_user,number).user_id).uname} </a></li>
             <li class='postsDatetime'>#{Postgenerator(current_user,number).timecreated.to_s[0..15]}</li>
         </ul>
         <div class='postsBody'>
@@ -237,6 +237,8 @@ end
 #users page, redirect to profile if click on self
 get '/users/:id' do
   @id = params[:id]
+  puts "@id is  #{@id}"
+  puts "current user id is  #{current_user.id}"
   if @id == current_user.id
   erb :profile
   else
