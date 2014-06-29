@@ -3,7 +3,7 @@ ruby '2.1.1'
 
 
 gem 'sinatra'
-gem 'activerecord'
+gem 'activerecord', "~>4.1.2"
 gem 'sinatra-activerecord'
 gem 'rake'
 gem 'rack-flash3'

@@ -13,12 +13,24 @@ configure(:development){set :database, "sqlite3:microblog.sqlite3"}
 
 helpers do
   def current_user
-    session[:user_id].nil? ? nil : User.find(session[:user_id])
+    if session[:user_id].nil? != nil 
+      if session[:user_id] <= User.last.id
+      return User.find(session[:user_id])
+    else
+      session[:user_id] = nil
+      return nil
+    end
+    else
+      return nil
+    
+  end
   end
 end
 
+
+
 get '/' do
-  if session[:user_id] == nil
+  if current_user == nil && session[:user_id] == nil
 	erb :index
   else
     erb :profile
@@ -32,12 +44,8 @@ end
 
 post '/sign_in' do
 
-  #puts params.inspect
   if User.find_by(uname: params[:user]["uname"]) != nil
       @user = User.find_by(uname: params[:user]["uname"])
-  
-  # puts "user pwd is #{@user.pwd} "
-  # puts "params pwd is #{params[:user]["pwd"]}"
     	if @user.pwd == params[:user]["pwd"]
     		session[:user_id] = @user.id
     		redirect '/profile'
@@ -120,12 +128,12 @@ post '/profile_edit' do
   redirect '/profile_edit'
 end
 
-#have to add delete account functionality here
-# post '/delete_account' do
-  
-#   flash[:alert] = "We're sorry to see you go ):"
-#     redirect '/sign_up'
-# end
+#delete account functionality here
+get '/delete_account' do
+  User.find(current_user.id).upate("uname"=>current_user.uname+"_deleted", "pwd"=>"deleted", "email"=> "deleted")
+  flash[:alert] = "We're sorry to see you go ):"
+  redirect '/sign_up'
+end
 
 
 get '/sign_up' do
@@ -231,39 +239,35 @@ def superPostgenerator(user, number)
   end
 end
 
+
 #generates a list of followings without repeat & without self
-def followinglistgenerator(user, id)
+def followinglistgenerator(user)
    b=[]
-   lg=User.find(id).followings.length
+   lg=User.find(user.id).followings.length
    if lg != 0
-   if User.find(id).followings[0].following_id != current_user.id
-   b << User.find(id).followings[0]
-   end
-   for a in (0...lg-1)
-    if User.find(id).followings[a].following_id != User.find(id).followings[a+1].following_id && User.find(id).followings[a+1].following_id != current_user.id
-      b << User.find(id).followings[a+1]
+   for a in (0...lg)
+    
+    if User.find(user.id).followings[a].following_id != user.id
+      b << User.find(user.id).followings[a]
     end 
-     
+    
   end
   end
   return b
 end
 #generates a list of followers without repeat & without self
-def followerlistgenerator(user, id)
+def followerlistgenerator(user)
    b=[]
-   lg=User.find(id).followers.length
+   lg=User.find(user.id).followers.length
    if lg != 0
-   if User.find(id).followers[0].follower_id != current_user.id
-   b << User.find(id).followers[0]
-   end
-   for a in (0...lg-1)
-    if User.find(id).followers[a].follower_id != User.find(id).followers[a+1].follower_id && User.find(id).followers[a+1].follower_id != current_user.id
-      b << User.find(id).followers[a+1]
-      
-      
-    end
+   for a in (0...lg)
+    
+    if User.find(user.id).followers[a].follower_id != user.id
+      b << User.find(user.id).followers[a]
+    end 
+    
   end
-end
+  end
   return b
 end
     
