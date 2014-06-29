@@ -99,14 +99,33 @@ get '/profile_edit' do
 end
 
 
+#this works, just not very pretty yet
+post '/profile_edit' do
 
-# post '/profile_edit' do
-#   if current_user.fname == nil
-#     current_user("fname"=>params[:user]["fname"])
-#   end
-#   redirect '/profile_edit'
+  if params[:pwd] == params[:cfpwd] 
+    current_user.update(pwd: params[:pwd])
+    else flash[:alert] = "Password does not match."
+    redirect '/profile_edit'
+  end
+  if params[:fname] != ""
+    current_user.update(fname: params[:fname])
+  end
+  if params[:lname] != ""
+    current_user.update(lname: params[:lname])
+  end
+  if params[:email] != ""
+    current_user.update(email: params[:email])
+  end
+  flash[:alert] = "Your changes have been made!"
+  redirect '/profile_edit'
+end
+
+#have to add delete account functionality here
+# post '/delete_account' do
+  
+#   flash[:alert] = "We're sorry to see you go ):"
+#     redirect '/sign_up'
 # end
-
 
 
 get '/sign_up' do
@@ -119,8 +138,8 @@ get '/sign_out' do
   redirect '/'
 
 end  
-#Selfpost grabs posts from self
 
+#Selfpost grabs posts from self
 def Selfpost(user, number)
   a=user.posts.order('timecreated ASC')
   length = a.length

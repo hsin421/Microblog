@@ -11,11 +11,13 @@
 	    <% if User.find(current_user.id).followings.find_by("following_id"=>@id) == nil %>
 		<%= "<a href='/follow/#{@id}'> <input id='follow_button' type='submit' value='Follow Me!'> </a>"%>
 		<% else %>
-		<input id="follow_button2" type="submit" value="Following!">
+		<!-- <input id="follow_button2" type="submit" value="Following!"> -->
+		<!-- below is a button that changes to "Unfollow" on hover, not functional yet -->
+		<button id="follow_button" type="submit"><span>Following</span></button>
 		<% end %>
 		<ul id="sidebarLinks">
 			<li id="userProfileWelcome"> @<%= User.find(@id).uname %></li>
-			<li><a href="/profile_edit">Edit Profile</a></li>
+			<!-- <li><a href="/profile_edit">Edit Profile</a></li> -->
 			<li id="followinglist">Following</li>
 			<li><div id="slidedown">  <% for a in followinglistgenerator(User.find(@id), @id) %>
                                       <%= "<a href='/users/#{a.following_id}'> #{User.find(a.following_id).uname} </a>" %>
@@ -31,8 +33,9 @@
 		</ul>
 	</div>
 	<div id="postFeed">
-	<h2>My Stories</h2>
-		
+
+		<h2>Recent Tails by @<%= User.find(@id).uname %></h2>
+
 		<div id="feed">
 
 			<div class="post" id="f3"><%= superselfpost(User.find(@id),9) %></div>

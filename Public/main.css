@@ -57,6 +57,16 @@ html, body {
 	background: url(images/pattern.jpg) center center repeat;
 	background-attachment: fixed;
 }
+a {
+	text-decoration: none;
+}
+a:hover {
+	opacity: .6;
+	text-decoration: none;
+}
+a:visited, a:active {
+	color: black;
+}
 
 #flash {
 	color:red;
@@ -64,9 +74,9 @@ html, body {
 }
 
 #profileWrapper #flash {
-	color:rgba(77, 227, 198, 1);
+	color: red;
 	text-align: center;
-	padding-bottom: 10px;
+	padding-bottom: 30px;
 }
 
 #indexWrapper #flash {
@@ -101,13 +111,9 @@ html, body {
 }
 #header a {
 	color: white;
-	text-decoration: none;
 }
 #header a:hover {
-	text-decoration: underline;
-}
-#header h1 a:hover {
-	text-decoration: none;
+	opacity: .8;
 }
 #logo {
 	width: 80px;
@@ -119,7 +125,7 @@ html, body {
 
 /*BEGIN index CSS*/
 #indexWrapper, #signUpWrapper {
-	background: url(images/pets2.jpg) center center repeat;
+	background: url(images/pets.jpg) center center repeat;
 	background-size: cover;
 	height: 100vh;
 	overflow: auto;
@@ -152,16 +158,28 @@ html, body {
 	padding-right: 25px;
 	padding-left: 30px;
 	text-align: center;
+	font-weight: bold;
+}
+#slidedown, #slidedown2 {
+	font-weight: normal;
+	line-height: 20px;
 }
 #sidebarLinks li {
 	margin-bottom: 5px;
 }
+#sidebarLinks a {
+	color: black;
+}
 #userProfileWelcome{
-	font-weight: bold;
-	font-size: 18px;
+	font-size: 20px;
+	padding-bottom: 10px;
 }
 #followerlist, #followinglist {
 	cursor: pointer;
+	font-weight: bold;
+}
+#followerlist:hover, #followinglist:hover {
+	opacity: .7;
 }
 #profilePic {
 	width: 218px;
@@ -203,6 +221,7 @@ html, body {
 #write:focus {
 	outline: none;
 }
+
 #post_submit, #follow_button, #delete_account, #make_changes, #follow_button2 {
 	position: relative;
     margin: 8px 0 0px 0;
@@ -285,13 +304,13 @@ html, body {
 
 /*BEGIN profile_edit CSS*/
 #postFeed h2, #profileEditContent h2{
-	font-size: 28px;
+	font-size: 26px;
 	color:#888;
 	padding-bottom: 20px;
 }
 
 #profileEditContent {
-	width:580px;
+	width:600px;
 }
 
 #profileEditForm button {
@@ -354,6 +373,10 @@ html, body {
       color:white;
       background-color: rgba(77, 227, 198, 1);
       outline:0;
+}
+#profileEditForm input:last-child {
+	margin-top: 0px;
+	margin-bottom: 25px;
 }
 /*END profile_edit CSS*/
 

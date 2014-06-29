@@ -1,27 +1,3 @@
-
-
-
-<!-- <div>
-    <textarea id="write"></textarea>
-    <input id="post_submit" type="submit" value="Submit"> 
-</div>
-<div id="feed">
-<<<<<<< HEAD
-<div class="post" id="f10">#10</div>
-<div class="post" id="f2">#2 </div>
-<div class="post" id="f3"></div>
-<div class="post" id="f4"></div>
-<div class="post" id="f5"></div>
-<div class="post" id="f6"></div>
-<div class="post" id="f7"></div>
-<div class="post" id="f8"></div>
-<div class="post" id="f9"></div>
-<div class="post" id="f1"> #1</div>
-
-</div> -->
-
-
-
 <div id="profileWrapper">
 
  <% for a in [:notice, :alert, :error, :greeting] do if !flash[a].nil? %>
@@ -31,53 +7,56 @@
 	<div id="profileSidebar">
 		<div id="profilePic"></div>
 
-		<input formMethod='POST' formAction='/profile' id="follow_button" type="submit" value="Follow Me!">
-
 		<ul id="sidebarLinks">
-			<li id="userProfileWelcome">Hello! User: @<%= current_user.uname %></li>
-			<li><a href="/profile_edit">Edit Profile</a></li>
+			<li id="userProfileWelcome">Hello! @<%= current_user.uname %></li>
+			<!-- <li><a href="/profile_edit">Edit Profile</a></li> -->
 			<li id="followinglist">Following</li>
-			<li><div id="slidedown">  <% for a in current_user.followings %>
-                                      <%= User.find(a.id).uname %>
+			<li><div id="slidedown">  <% for a in followinglistgenerator(current_user, current_user.id) %>
+                                      <%= "<a href='/users/#{a.following_id}'> #{User.find(a.following_id).uname} </a>" %>
                                       <br>
                                       <% end %> 
 			 </div></li>
 			<li id="followerlist">Followers</li>
-			<li><div id="slidedown2">  <% for a in current_user.followers %>
-                                      <%= User.find(a.id).uname %>
+			<li><div id="slidedown2">  <% for a in followerlistgenerator(current_user, current_user.id) %>
+                                     <%= "<a href='/users/#{a.follower_id}'> #{User.find(a.follower_id).uname} </a>" %>
                                       <br>
                                       <% end %> 
 			 </div></li>
+			 <li><a href="#">My Posts</a></li>
 		</ul>
 	</div>
 	<div id="profileEditContent">
 		<h2>Edit Your Profile</h2>
 		<form id="profileEditForm" method='POST' action='/profile_edit'>
-			<label for="[user]fname">Add or update your first name:</label>
-			<input type="text" name="[user]fname" value=
+			<label for="fname">Add or update your first name:</label>
+			<input type="text" name="fname" placeholder=
 				<% if current_user.fname == nil %>
-				<%= "We have nothing on file yet!" %>
-				<% else current_user.fname %>
-				<% end %> />
+				"We have nothing on file yet!"
+				<% else %> 
+				<%= "#{current_user.fname}" %>
+				<% end %> >
 
-			<label for="[user]lname">Add or update your last name:</label>
-			<input type="text" name="[user]lname" value=
+			<label for="lname">Add or update your last name:</label>
+			<input type="text" name="lname" placeholder=
 				<% if current_user.lname == nil %>
-				<%= "We have nothing on file yet!" %>
-				<% else current_user.lname %>
-				<% end %> />
+				"We have nothing on file yet!"
+				<% else %> 
+				<%= "#{current_user.lname}" %>
+				<% end %> >
 
-			<label for="[user]pwd">Change your password:</label>
-			<input type="password" name="[user]pwd"/>
-			<label for="[user]pwd">Confirm new password:</label>
-			<input type="password" name="cfpwd"/>
+			<label for="email">Update your email address:</label>
+			<input type="email" name="email" placeholder=<%= "#{current_user.email}" %> >
 
-			<input id="make_changes" name="make_changes" type="submit" value="Make Changes"/>
+			<label for="pwd">Change your password:</label>
+			<input type="password" name="pwd" value=<%= "#{current_user.pwd}" %> >
+			<label for="cfpwd">Confirm password:</label>
+			<input type="password" name="cfpwd" value=<%= "#{current_user.pwd}" %> required >
 
+			<input id="make_changes" name="make_changes" type="submit" value="Make Changes">
 
        </form>
 	
-		<label for="delete_account">Deleting your account is permanent! You will not be able to recover any data once your account has been removed.</label><br>
+		<label for="delete_account">Deleting your account is permanent! Once deleted, all data will be lost.</label><br>
        <input id="delete_account" type="submit" value="Delete Account"/>
 	
 	</div>
