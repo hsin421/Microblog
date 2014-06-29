@@ -13,7 +13,7 @@ configure(:development){set :database, "sqlite3:microblog.sqlite3"}
 
 helpers do
   def current_user
-    if session[:user_id].nil? != nil 
+    if session[:user_id] != nil 
       if session[:user_id] <= User.last.id
       return User.find(session[:user_id])
     else
@@ -71,7 +71,7 @@ post '/sign_up' do
   @user = User.find_by(params[:user])
   session[:user_id] = @user.id
   flash[:greeting] = "Account created! Start following friends, writing posts and filling out your profile."
-  Following.create({"id"=>@user.id, "user_id"=>@user.id})  #so the user follows self
+  Following.create({"following_id"=>@user.id, "user_id"=>@user.id})  #so the user follows self
   redirect '/profile'
    else
     flash[:alert] = "Password doesn't match. Please try again"
@@ -283,8 +283,8 @@ get '/users/:id' do
   end
 end
 
-#for following and follower relationships: Following(id:3, user_id:5) means 5 is following 3
-# and Follower(id:3, user_id:5) means 3 is a follower of 5 
+#for following and follower relationships: Following(following_id:3, user_id:5) means 5 is following 3
+# and Follower(follower_id:3, user_id:5) means 3 is a follower of 5 
 # Hsin's convention, sorry for all confusions LOL
 get '/follow/:id' do
   @id=params[:id]
