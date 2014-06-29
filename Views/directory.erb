@@ -11,32 +11,41 @@
 				<li id="userProfileWelcome">Hello! @<%= current_user.uname %></li>
 				<!-- <li><a href="/profile_edit">Edit Profile</a></li> -->
 				<li id="followinglist">Following</li>
-				<li><div id="slidedown">  <% for a in followinglistgenerator(current_user, current_user.id) %>
-	                                      <%= "<a href='/users/#{a.following_id}'> #{User.find(a.following_id).uname} </a>" %>
-	                                      <br>
-	                                      <% end %> 
-				 </div></li>
-				<li id="followerlist">Followers</li>
-				<li><div id="slidedown2">  <% for a in followerlistgenerator(current_user, current_user.id) %>
-	                                     <%= "<a href='/users/#{a.follower_id}'> #{User.find(a.follower_id).uname} </a>" %>
-	                                      <br>
-	                                      <% end %> 
-				 </div></li>
+				<li><div id="slidedown">  <% for a in followinglistgenerator(current_user) %>
+                                      <%= "<a href='/users/#{a.following_id}'> #{User.find(a.following_id).uname} </a>" %>
+                                      <br>
+                                      <% end %> 
+			 </div></li>
+			<li id="followerlist">Followers</li>
+			<li><div id="slidedown2">  <% for a in followerlistgenerator(current_user) %>
+                                     <%= "<a href='/users/#{a.follower_id}'> #{User.find(a.follower_id).uname} </a>" %>
+                                      <br>
+                                      <% end %> 
+			 </div></li>
 				 <li><a href="#">My Posts</a></li>
 			</ul>
 		<% else %>
-			<ul>
+			<ul style="text-align:left;">
 				<li>Already A Member?
 				<br><a href="/">Sign in</a></li>
+				<br>
 				<li>Want to join?
 				<br><a href="/sign_up">Sign up</a></li>
 			</ul>
 		<% end %>
 	</div>
 	
-	<div id="profileEditContent">
-		<h2>Users</h2>
-	
-
+	<div id="postFeed">
+		<h2>All Users</h2>
+		<div id="feed">
+			<% for a in User.all %>
+			<div class="post"  style="border:none;">
+				<ul class="postDetails">
+					<li class="postsUname"><%= "<a href='/users/#{a.id}'>@#{a.uname}</a>" %>
+					</li>
+				</ul>
+			</div>
+			<% end %>
+		</div>
 	</div>
 </div>
