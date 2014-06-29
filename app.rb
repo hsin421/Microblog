@@ -25,6 +25,11 @@ get '/' do
   end
 end
 
+get '/admin' do
+  erb :admin
+
+end
+
 post '/sign_in' do
 
   #puts params.inspect

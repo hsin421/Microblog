@@ -1,0 +1,34 @@
+<div id="profileWrapper">
+
+ <% for a in [:notice, :alert, :error, :greeting] do if !flash[a].nil? %>
+      <div id="flash"><b><%= flash[a] %></b></div>
+    <% end %>
+    <% end %>
+	<div id="profileSidebar">
+	<div id="profilePicUser"></div>
+	    
+		<ul id="sidebarLinks">
+			<li id="userProfileWelcome"> Hello Mallory and Hsin!</li>
+			
+			 
+		</ul>
+	</div>
+	<div id="postFeed">
+		<h2>All Users</h2>
+		<div id="feed">
+
+			<% for a in User.all %>
+			
+			<div class="post">
+				<ul class='postDetails'>
+            <li class='postsUname'><%= "<a href='/users/#{a.id}'>@#{a.uname} </a></li>
+            <li class='postsDatetime'>#{a.email}</li>
+        </ul>
+        <div class='postsBody'> 'Passwrods: ' #{a.pwd} </div>
+        </div>" %>
+        <% end %>
+			</div>
+
+		</div>
+	</div>
+</div>

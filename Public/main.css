@@ -203,7 +203,7 @@ html, body {
 #write:focus {
 	outline: none;
 }
-#post_submit, #follow_button, #delete_account, #make_changes {
+#post_submit, #follow_button, #delete_account, #make_changes, #follow_button2 {
 	position: relative;
     margin: 8px 0 0px 0;
     background-color: white;
