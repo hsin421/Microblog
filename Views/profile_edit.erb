@@ -56,12 +56,19 @@
 
 		</form>
 
-		<h2>Delete Your Account</h2>
+<!-- mallory's delete acount form -->
+<!-- 		<h2>Delete Your Account</h2>
 		<form class="profileEditForm" method='POST' action='/delete_account'>
 			<label for="pwd">Deleting your account is permanent! Please enter your password to continue:</label>
 			<input type="password" name="pwd" required>
 			<input id="delete_account" type="submit" value="Delete Account" style="margin:0" />
-		</form>
+		</form> -->
+
+	
+		 <label for="delete_account">Deleting your account is permanent! Once deleted, all data will be lost.</label><br>
+		<a href='/delete_account'>
+       <input id="delete_account" type="submit" value="Delete Account"/>
+	    </a>
 
 	</div>
 </div>

@@ -28,7 +28,7 @@ $("#followinglist").click(function(){
 
 $("#followerlist").click(function(){
 	if ($("#slidedown2").is(":hidden")){
-       $("#slidedown2").slideDown("slow");
+       $("#slidedown2").slideDown();
 	}else {
 		$("#slidedown2").hide();
 	};
