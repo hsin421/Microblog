@@ -274,8 +274,8 @@ end
 #users page, redirect to profile if click on self
 get '/users/:id' do
   @id = params[:id]
-  puts "@id is  #{@id}"
-  puts "current user id is  #{current_user.id}"
+  # puts "@id is  #{@id}"
+  # puts "current user id is  #{current_user.id}"
   if @id == current_user.id
   erb :profile
   else

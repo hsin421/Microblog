@@ -20,13 +20,13 @@
 			<!-- <li><a href="/profile_edit">Edit Profile</a></li> -->
 			<li id="followinglist">Following</li>
 			<li><div id="slidedown">  <% for a in followinglistgenerator(User.find(@id)) %>
-                                      <%= "<a href='/users/#{a.following_id}'> #{User.find(a.following_id).uname} </a>" %>
+                                      <%= "<a href='/users/#{a.following_id}'> @#{User.find(a.following_id).uname} </a>" %>
                                       <br>
                                       <% end %> 
 			 </div></li>
 			<li id="followerlist">Followers</li>
 			<li><div id="slidedown2">  <% for a in followerlistgenerator(User.find(@id)) %>
-                                      <%= "<a href='/users/#{a.follower_id}'> #{User.find(a.follower_id).uname} </a>" %>
+                                      <%= "<a href='/users/#{a.follower_id}'> @#{User.find(a.follower_id).uname} </a>" %>
                                       <br>
                                       <% end %> 
 			 </div></li>
