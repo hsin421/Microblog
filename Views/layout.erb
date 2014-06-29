@@ -26,12 +26,12 @@
 			<ul>
 				<!-- <li><a href="/profile">My Posts</a></li>
 				<li><a href="/profile">My Profile</a></li> -->
+				<li><a href="/directory">Users</a></li>
 				<li> <% if session[:user_id] != nil %> 
-                     <a href="/sign_out"> <%= "Sign Out" %></a>
-                   <% else %>
-				  <a href="/"> <%= "Sign In" %> </a>
-				 
-				  <% end %>
+					<a href="/sign_out"> <%= "Sign Out" %></a>
+					<% else %>
+					<a href="/"> <%= "Sign In" %> </a>
+					<% end %>
 				  </li>
 			</ul>
 		</div>

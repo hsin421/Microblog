@@ -25,6 +25,16 @@ get '/' do
   end
 end
 
+get '/directory' do
+  # @allUsers = []
+  erb :directory
+end
+
+get '/my_posts' do
+  # @allUsers = []
+  erb :my_posts
+end
+
 post '/sign_in' do
 
   #puts params.inspect
@@ -70,9 +80,8 @@ post '/sign_up' do
   redirect '/sign_up'
 end
 
-
-
 end
+
 
 get '/profile' do
   if current_user != nil
@@ -82,12 +91,13 @@ get '/profile' do
   end
 end
 
+
 #gets post from profile page
-post '/profile' do
-  
+post '/profile' do  
   Post.create({"body"=>params["body"], "user_id"=>current_user.id, "timecreated"=>Time.now})
   redirect '/profile'
 end
+
 
 get '/profile_edit' do
   erb :profile_edit
@@ -115,17 +125,22 @@ post '/profile_edit' do
   redirect '/profile_edit'
 end
 
-#have to add delete account functionality here
-# post '/delete_account' do
-  
-#   flash[:alert] = "We're sorry to see you go ):"
-#     redirect '/sign_up'
-# end
+
+# mallory's delete account functionality below
+post '/delete_account' do
+  if params[:pwd] == current_user.pwd
+    current_user.update(uname: "#{current_user.uname}_deleted_#{Time.now}", pwd: "#{SecureRandom.base64(10)}", lname: nil, fname: nil, email: nil)
+    session[:user_id] = nil
+  end
+  flash[:alert] = "We're sorry to see you go."
+    redirect '/sign_up'
+end
 
 
 get '/sign_up' do
 	erb :sign_up
 end
+
 
 get '/sign_out' do
   session[:user_id] = nil
@@ -133,6 +148,7 @@ get '/sign_out' do
   redirect '/'
 
 end  
+
 
 #Selfpost grabs posts from self
 def Selfpost(user, number)

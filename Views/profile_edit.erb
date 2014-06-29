@@ -22,12 +22,12 @@
                                       <br>
                                       <% end %> 
 			 </div></li>
-			 <li><a href="#">My Posts</a></li>
+			 <li><a href="/my_posts">My Posts</a></li>
 		</ul>
 	</div>
 	<div id="profileEditContent">
 		<h2>Edit Your Profile</h2>
-		<form id="profileEditForm" method='POST' action='/profile_edit'>
+		<form class="profileEditForm" method='POST' action='/profile_edit'>
 			<label for="fname">Add or update your first name:</label>
 			<input type="text" name="fname" placeholder=
 				<% if current_user.fname == nil %>
@@ -52,13 +52,17 @@
 			<label for="cfpwd">Confirm password:</label>
 			<input type="password" name="cfpwd" value=<%= "#{current_user.pwd}" %> required >
 
-			<input id="make_changes" name="make_changes" type="submit" value="Make Changes">
+			<input id="make_changes" name="make_changes" type="submit" value="Make Changes" style="margin:0 0 30px 0;">
 
-       </form>
-	
-		<label for="delete_account">Deleting your account is permanent! Once deleted, all data will be lost.</label><br>
-       <input id="delete_account" type="submit" value="Delete Account"/>
-	
+		</form>
+
+		<h2>Delete Your Account</h2>
+		<form class="profileEditForm" method='POST' action='/delete_account'>
+			<label for="pwd">Deleting your account is permanent! Please enter your password to continue:</label>
+			<input type="password" name="pwd" required>
+			<input id="delete_account" type="submit" value="Delete Account" style="margin:0" />
+		</form>
+
 	</div>
 </div>
 

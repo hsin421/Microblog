@@ -22,29 +22,29 @@
                                       <br>
                                       <% end %> 
 			 </div></li>
-			<li><a href="my_posts">My Posts</a></li>
+			<li><a href="/">Recent Tails</a></li>
 			 <li><a href="/profile_edit">Edit Profile</a></li>
 		</ul>
 	</div>
 	<div id="postFeed">
-		<h2>Recent Tails</h2>
+		<h2>My Recent Tails</h2>
 		<form id="makePost" method='POST' action='/profile'>
 			<textarea id="write" name="body" placeholder="Start typing your new post here..."></textarea>
 			<br/>
 			<input id="post_submit" type="submit" value="Post" >
 		</form>
 		<div id="feed">
-
-			<div class="post" id="f3"><%= superPostgenerator(current_user,9) %></div>
-			<div class="post" id="f4"><%= superPostgenerator(current_user,8) %></div>
-			<div class="post" id="f3"><%= superPostgenerator(current_user,7) %></div>
-			<div class="post" id="f4"><%= superPostgenerator(current_user,6) %></div>
-			<div class="post" id="f5"><%= superPostgenerator(current_user,5) %></div>
-			<div class="post" id="f6"><%= superPostgenerator(current_user,4) %></div>
-			<div class="post" id="f7"><%= superPostgenerator(current_user,3) %></div>
-			<div class="post" id="f8"><%= superPostgenerator(current_user,2) %></div>
-			<div class="post" id="f9"><%= superPostgenerator(current_user,1) %></div>
-			<div class="post" id="f1"><%= superPostgenerator(current_user,0) %></div>
+			
+			<div class="post" id="f3"><%= superselfpost(User.find(current_user.id),9) %></div>
+			<div class="post" id="f4"><%= superselfpost(User.find(current_user.id),8) %></div>
+			<div class="post" id="f3"><%= superselfpost(User.find(current_user.id),7) %></div>
+			<div class="post" id="f4"><%= superselfpost(User.find(current_user.id),6) %></div>
+			<div class="post" id="f5"><%= superselfpost(User.find(current_user.id),5) %></div>
+			<div class="post" id="f6"><%= superselfpost(User.find(current_user.id),4) %></div>
+			<div class="post" id="f7"><%= superselfpost(User.find(current_user.id),3) %></div>
+			<div class="post" id="f8"><%= superselfpost(User.find(current_user.id),2) %></div>
+			<div class="post" id="f9"><%= superselfpost(User.find(current_user.id),1) %></div>
+			<div class="post" id="f1"><%= superselfpost(User.find(current_user.id),0) %></div>
 
 		</div>
 	</div>
