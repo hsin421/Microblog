@@ -24,14 +24,17 @@
 			<a href="/"><img id="logo" src="/images/logo.png"></a>
 			<% end %>
 			<ul>
-				<!-- <li><a href="/profile">My Posts</a></li>
-				<li><a href="/profile">My Profile</a></li> -->
+				<% if session[:user_id] != nil %> 
+					<li> <a href="/directory"> <%= "Users" %></a></li>
+					<% else %>
+					<li></li>
+				<% end %>
+				  
 				<li> <% if session[:user_id] != nil %> 
-                     <a href="/sign_out"> <%= "Sign Out" %></a>
-                   <% else %>
-				  <a href="/"> <%= "Sign In" %> </a>
-				 
-				  <% end %>
+					<a href="/sign_out"> <%= "Sign Out" %></a>
+					<% else %>
+					<a href="/"> <%= "Sign In" %> </a>
+					<% end %>
 				  </li>
 			</ul>
 		</div>

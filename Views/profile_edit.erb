@@ -10,13 +10,24 @@
 		<ul id="sidebarLinks">
 			<li id="userProfileWelcome">Hello! @<%= current_user.uname %></li>
 			<!-- <li><a href="/profile_edit">Edit Profile</a></li> -->
-			
-			 <li><a href="#">My Posts</a></li>
+			<li id="followinglist">Following</li>
+			<li><div id="slidedown">  <% for a in followinglistgenerator(current_user) %>
+                                      <%= "<a href='/users/#{a.following_id}'> #{User.find(a.following_id).uname} </a>" %>
+                                      <br>
+                                      <% end %> 
+			 </div></li>
+			<li id="followerlist">Followers</li>
+			<li><div id="slidedown2">  <% for a in followerlistgenerator(current_user) %>
+                                     <%= "<a href='/users/#{a.follower_id}'> #{User.find(a.follower_id).uname} </a>" %>
+                                      <br>
+                                      <% end %> 
+			 </div></li>
+			 <li><a href="/my_posts">My Posts</a></li>
 		</ul>
 	</div>
 	<div id="profileEditContent">
 		<h2>Edit Your Profile</h2>
-		<form id="profileEditForm" method='POST' action='/profile_edit'>
+		<form class="profileEditForm" method='POST' action='/profile_edit'>
 			<label for="fname">Add or update your first name:</label>
 			<input type="text" name="fname" placeholder=
 				<% if current_user.fname == nil %>
@@ -41,15 +52,24 @@
 			<label for="cfpwd">Confirm password:</label>
 			<input type="password" name="cfpwd" value=<%= "#{current_user.pwd}" %> required >
 
-			<input id="make_changes" name="make_changes" type="submit" value="Make Changes">
+			<input id="make_changes" name="make_changes" type="submit" value="Make Changes" style="margin:0 0 30px 0;">
 
-       </form>
+		</form>
+
+<!-- mallory's delete acount form -->
+<!-- 		<h2>Delete Your Account</h2>
+		<form class="profileEditForm" method='POST' action='/delete_account'>
+			<label for="pwd">Deleting your account is permanent! Please enter your password to continue:</label>
+			<input type="password" name="pwd" required>
+			<input id="delete_account" type="submit" value="Delete Account" style="margin:0" />
+		</form> -->
 
 	
 		 <label for="delete_account">Deleting your account is permanent! Once deleted, all data will be lost.</label><br>
 		<a href='/delete_account'>
-       <input id="delete_account" type="submit" value="Delete Account"/>
+       <input id="delete_account" type="submit" value="Delete Account" style="margin:12px 0 0 0;" />
 	    </a>
+
 	</div>
 </div>
 
