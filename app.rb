@@ -11,6 +11,7 @@ set :sessions => true
 
 configure(:development){set :database, "sqlite3:microblog.sqlite3"}
 
+# define current user and set session for user log in
 helpers do
   def current_user
     if session[:user_id] != nil 
@@ -27,7 +28,7 @@ helpers do
   end
 end
 
-
+#direct user to sign in page if not logged in, to profile if logged in
 get '/' do
   if current_user == nil && session[:user_id] == nil
 	erb :index
@@ -36,18 +37,18 @@ get '/' do
   end
 end
 
-
+#for users to see, follow and interact with all other users
 get '/directory' do
   # @allUsers = []
   erb :directory
 end
 
-
+#To see all the current user's posts
 get '/my_posts' do
   erb :my_posts
 end
 
-
+#for Admin to see all user info
 get '/admin' do
   erb :admin
 end
@@ -106,7 +107,7 @@ get '/profile' do
 end
 
 
-#gets post from profile page
+#user creating post from profile page
 post '/profile' do  
   Post.create({"body"=>params["body"], "user_id"=>current_user.id, "timecreated"=>Time.now})
   redirect '/profile'
@@ -139,9 +140,8 @@ post '/profile_edit' do
   redirect '/profile_edit'
 end
 
-#def destroyFollowing(user)
-
 #mallory's delete account functionality below
+# 1) delete all posts 2) change user name/pwd 3) make sure the deleted does not show up in follow lists
 get '/delete_account' do
   
     for a in current_user.posts 
@@ -175,7 +175,7 @@ get '/sign_out' do
 end  
 
 
-#Selfpost grabs posts from self
+#Selfpost grabs posts from current user
 def Selfpost(user, number)
   a=user.posts.order('timecreated ASC')
   length = a.length
@@ -189,7 +189,7 @@ def Selfpost(user, number)
   end
 end
 
-#This puts Selfpost in the correct format
+#This puts Selfpost in the correct format and HTML output
 def superselfpost(user, number)
   if Selfpost(user, number) != nil
     return "<ul class='postDetails'>
@@ -214,10 +214,12 @@ def Postgrabber(my_user)
     my_array << p     
     end
   end
+  #grabs an array of timestapms
   array_time = []
   for a in my_array
    array_time << a.timecreated
   end
+  #sorts timestamp in order and puts the corresponding posts in array_want
  array_want = []
  for a in array_time.sort
    for b in my_array
@@ -226,6 +228,7 @@ def Postgrabber(my_user)
     end
    end
   end
+  #deletes repeating entries
   no_repeat = []
   lg = array_want.length
   no_repeat << array_want[0]
@@ -238,7 +241,7 @@ def Postgrabber(my_user)
   return no_repeat
 end
 
-#number from 0 to 9, each number returning a posts from previous array
+#number from 0 to 9, each number returning a posts from previous array, with 9 the latest and 0 the oldest
 def Postgenerator(user, number)
   a=Postgrabber(user)
   length = a.length
@@ -299,7 +302,7 @@ def followerlistgenerator(user)
   return b
 end
     
-#users page, redirect to profile if click on self
+#users page, redirect to profile if click on self (not functional yet donno why)
 get '/users/:id' do
   @id = params[:id]
   # puts "@id is  #{@id}"
@@ -311,8 +314,8 @@ get '/users/:id' do
   end
 end
 
-#for following and follower relationships: Following(following_id:3, user_id:5) means 5 is following 3
-# and Follower(follower_id:3, user_id:5) means 3 is a follower of 5 
+#for following and follower relationships: Following(following_id=>3, user_id=>5) means 5 is following 3
+# and Follower(follower_id=>3, user_id=>5) means 3 is a follower of 5 
 # Hsin's convention, sorry for all confusions LOL
 get '/follow/:id' do
   @id=params[:id]
@@ -334,6 +337,23 @@ flash[:alert]="User unfollowed"
 erb :users
 end
 
+#Intricate details of "follow me", "following" and "unfollow" buttons
+#see users page for details, but it's hard to comment there so explained here
+#if statement conditions whether the user is current user's following list, if no show "follow me" (#follow_button)
+#if yes, show "following" (#follow_button2). Mallory's JS lets hovering change "following" to "unfollow"
+#link #follow_button2 to '/unfollow/@id' which removes following/follower relations, which in turn swaps
+#follow_button2 to #follow_button via the initial if statement in line 342
 
+#==============================================
+#Redirect pages
+#when using post - simply redirect '/'
+#when using get - do erb :page
+
+#==============================================
+#database.find_by() returns first matched element
+#database.where() returns all matched elements
+
+#==============================================
+#remaining puzzle: how to call Ruby methods in Javascript and vice versa
 
 

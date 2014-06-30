@@ -48,7 +48,7 @@
 			<input type="email" name="email" placeholder=<%= "#{current_user.email}" %> >
 
 			<label for="pwd">Change your password:</label>
-			<input type="password" name="pwd" value="" >
+			<input type="password" name="pwd" value=<%="#{current_user.pwd}"%> >
 			<label for="cfpwd">Confirm password:</label>
 			<input type="password" name="cfpwd" value="" >
 
