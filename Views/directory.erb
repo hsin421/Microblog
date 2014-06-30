@@ -40,10 +40,12 @@
 		<h2>All Users</h2>
 		<div id="feed">
 			<% for a in User.all %>
+			<% if a.uname[-33..-27] != "deleted" %>
 			<div class="post"  style="border:none;">
 				<ul class="postDetails">
 					<li class="postsUname"><%= "<a href='/users/#{a.id}'>@#{a.uname}</a>" %>
 					</li>
+					<% end %>
 				</ul>
 			</div>
 			<% end %>

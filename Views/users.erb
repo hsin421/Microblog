@@ -13,7 +13,7 @@
 		<% else %>
 		<!-- <input id="follow_button2" type="submit" value="Following!"> -->
 		<!-- below is a button that changes to "Unfollow" on hover, not functional yet -->
-		<button id="follow_button" type="submit"><span>Following</span></button>
+		<%="<a href='/unfollow/#{@id}'><button id='follow_button2' type='submit'>"%><span>Following</span></button> </a>
 		<% end %>
 		<ul id="sidebarLinks">
 			<li id="userProfileWelcome"> @<%= User.find(@id).uname %></li>

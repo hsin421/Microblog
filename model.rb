@@ -22,6 +22,8 @@ end
 #deletes repeated followings and followers, if any. This code is not executed anywhere, 
 #run this method when clearing repeated following/follower is needed
 def Deletefollowrepeat
+	Following.create("id"=>5, "user_id"=> 1, "following_id"=>1)
+	Follower.create("id"=>2, "user_id"=>1, "follower_id"=>1)
 	b=[]
 	lg = Following.all.length
 	for a in (1..lg-1)
@@ -50,7 +52,7 @@ def Deletefollowrepeat
 		Following.find(i).delete
 	end
 	for j in d
-		Follower.find(d).delete
+		Follower.find(j).delete
 	end
 end
 

@@ -56,7 +56,7 @@ for(a=1; a<11; a++){
 	// });
 
 	//changes "Following!" button to "Unfollow" on hover
-	$('#follow_button').hover(function() {
+	$('#follow_button2').hover(function() {
 		$(this).find('span').text('Unfollow');
 		}, function() {
 		$(this).find('span').text('Following');

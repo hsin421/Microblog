@@ -302,6 +302,13 @@ a:visited, a:active {
 	clear: both;
 }
 
+#slidedown, #slidedown2 {
+
+	border: 2px solid rgba(77, 227, 198, 1);
+	border-radius: 10px;
+	width: 150px;
+}
+
 /*END profile CSS*/
 
 /*BEGIN profile_edit CSS*/

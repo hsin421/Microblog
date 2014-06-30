@@ -81,7 +81,7 @@ post '/sign_up' do
   User.create(params[:user])
   @user = User.find_by(params[:user])
   session[:user_id] = @user.id
-  flash[:greeting] = "Account created! Start following friends, writing posts and filling out your profile."
+  flash[:greeting] = "Account created! Try Checking out everyone (go to Users), writing posts and filling out your profile."
   Following.create({"following_id"=>@user.id, "user_id"=>@user.id})  #so the user follows self
   redirect '/profile'
    else
@@ -139,24 +139,27 @@ post '/profile_edit' do
   redirect '/profile_edit'
 end
 
+#def destroyFollowing(user)
 
-# mallory's delete account functionality below
-# post '/delete_account' do
-#   if params[:pwd] == current_user.pwd
-#     current_user.update(uname: "#{current_user.uname}_deleted_#{Time.now}", pwd: "#{SecureRandom.base64(10)}", lname: nil, fname: nil, email: nil)
-#     session[:user_id] = nil
-#   end
-#   flash[:alert] = "We're sorry to see you go."
-#     redirect '/sign_up'
-# end
+#mallory's delete account functionality below
+get '/delete_account' do
+  
+    for a in current_user.posts 
+      a.delete
+    end
+    current_user.update(:uname=> "#{current_user.uname}_deleted_#{Time.now.to_s}", :pwd => "#{SecureRandom.base64(10)}", :lname=> nil, :fname=> nil, :email=> nil)
+    session[:user_id] = nil
+    flash[:alert] = "We're sorry to see you go."
+    erb :sign_up
+end
 
 
 #delete account functionality here
-get '/delete_account' do
-  User.find(current_user.id).upate("uname"=>current_user.uname+"_deleted", "pwd"=>"deleted", "email"=> "deleted")
-  flash[:alert] = "We're sorry to see you go ):"
-  redirect '/sign_up'
-end
+# get '/delete_account' do
+#   User.find(current_user.id).upate("uname"=>current_user.uname+"_deleted", "pwd"=>"deleted", "email"=> "deleted")
+#   flash[:alert] = "We're sorry to see you go ):"
+#   redirect '/sign_up'
+# end
 
 
 get '/sign_up' do
@@ -265,14 +268,14 @@ def superPostgenerator(user, number)
 end
 
 
-#generates a list of followings without repeat & without self
+#generates a list of followings without repeat & without self and filters out deleted accounts and unfollows
 def followinglistgenerator(user)
    b=[]
    lg=User.find(user.id).followings.length
    if lg != 0
    for a in (0...lg)
     
-    if User.find(user.id).followings[a].following_id != user.id
+    if User.find(user.id).followings[a].following_id != user.id && User.find(User.find(user.id).followings[a].following_id).uname[-33..-27] != "deleted"
       b << User.find(user.id).followings[a]
     end 
     
@@ -280,14 +283,14 @@ def followinglistgenerator(user)
   end
   return b
 end
-#generates a list of followers without repeat & without self
+#generates a list of followers without repeat & without self and filters out deleted accounts and unfollows
 def followerlistgenerator(user)
    b=[]
    lg=User.find(user.id).followers.length
    if lg != 0
    for a in (0...lg)
     
-    if User.find(user.id).followers[a].follower_id != user.id
+    if User.find(user.id).followers[a].follower_id != user.id && User.find(User.find(user.id).followers[a].follower_id).uname[-33..-27] != "deleted"
       b << User.find(user.id).followers[a]
     end 
     
@@ -302,7 +305,7 @@ get '/users/:id' do
   # puts "@id is  #{@id}"
   # puts "current user id is  #{current_user.id}"
   if @id == current_user.id
-  erb :profile
+  erb :my_posts
   else
   erb :users
   end
@@ -315,11 +318,21 @@ get '/follow/:id' do
   @id=params[:id]
   Following.create("following_id"=>@id, "user_id"=>current_user.id)
   Follower.create("follower_id"=>current_user.id, "user_id"=>@id)
-  redirect '/'
+  erb :users
 end  
-      
 
-
+#redirect all unfollow data to the deleted account(deletest) so that it wont show up in lists     
+get '/unfollow/:id' do
+  @id = params[:id]
+  for a in Following.where(:user_id=>current_user.id, :following_id=>@id) 
+    a.update(:user_id=> 6, :following_id=>6)
+  end
+  for a in Follower.where(:user_id=>@id, :follower_id=>current_user.id) 
+    a.update(:user_id=> 6, :follower_id=>6)
+  end
+flash[:alert]="User unfollowed"
+erb :users
+end
 
 
 
