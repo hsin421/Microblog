@@ -162,9 +162,14 @@ a:visited, a:active, a:link {
 	text-align: center;
 	font-weight: bold;
 }
+
 #slidedown, #slidedown2 {
+	border: 1px solid rgba(77, 227, 198, 1);
+	border-radius: 10px;
+	width: 100%;
 	font-weight: normal;
-	line-height: 20px;
+	line-height: 21px;
+	padding: 4px 0;
 }
 #sidebarLinks li {
 	margin-bottom: 5px;
@@ -201,7 +206,6 @@ a:visited, a:active, a:link {
 	margin-bottom: 10px;
 	border: 2px solid rgba(77, 227, 198, 1);
 }
-
 
 #postFeed, #profileEditContent {
 	padding-left: 25px;
@@ -252,7 +256,6 @@ a:visited, a:active, a:link {
     border-radius: 60px;
     color: white;
 }
-
 #follow_button2 {
     margin-bottom: 15px;
     background-color: rgba(77, 227, 198, 1);
@@ -300,13 +303,6 @@ a:visited, a:active, a:link {
 }
 .postsBody {
 	clear: both;
-}
-
-#slidedown, #slidedown2 {
-
-	border: 2px solid rgba(77, 227, 198, 1);
-	border-radius: 10px;
-	width: 150px;
 }
 
 /*END profile CSS*/
